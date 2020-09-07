@@ -8,5 +8,11 @@
   "block.spiritcraft.spiritwood": "Spiritwood",
   "block.spiritcraft.spiritwood_log": "Spiritwood Log",
   "block.spiritcraft.spiritwood_leaves": "Spiritwood Leaves",
-  "block.spiritcraft.spiritwood_sapling": "Spiritwood Sapling"
+  "block.spiritcraft.spiritwood_sapling": "Spiritwood Sapling",
+  "block.spiritcraft.aura_crystal_block": "Aura Crystal Block",
+  "block.spiritcraft.solaris_crystal_block": "Solaris Crystal Block",
+  "block.spiritcraft.hydra_crystal_block": "Hydra Crystal Block",
+  "block.spiritcraft.tellus_crystal_block": "Tellus Crystal Block",
+  "block.spiritcraft.ordin_crystal_block": "Ordin Crystal Block",
+  "block.spiritcraft.vale_crystal_block": "Vale Crystal Block"
 }
