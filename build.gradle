@@ -12,6 +12,7 @@ group = project.maven_group
 
 repositories {
 	maven { url = "https://maven.onyxstudios.dev/" }
+	maven { url = "https://jitpack.io/" }
 }
 
 dependencies {
@@ -22,6 +23,9 @@ dependencies {
 
 	modImplementation "dev.onyxstudios:FOML:${project.foml_version}"
 	include "dev.onyxstudios:FOML:${project.foml_version}"
+
+	modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
+	include "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
 }
 
 processResources {
