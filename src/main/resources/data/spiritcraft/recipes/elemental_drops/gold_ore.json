@@ -1,9 +1,9 @@
 {
   "type": "spiritcraft:elemental_drops",
   "ore": {
-    "item": "minecraft:iron_ore"
+    "tag": "minecraft:gold_ores"
   },
   "result": {
-    "item": "spiritcraft:iron_ore_cluster"
+    "item": "spiritcraft:gold_ore_cluster"
   }
 }

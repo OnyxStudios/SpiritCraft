@@ -14,10 +14,17 @@ public class ModItems {
     public static Item SPIRIUM_INGOT = new BaseItem();
     public static Item NULL_INGOT = new BaseItem();
     public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
+    public static Item IRON_ORE_CLUSTER = new BaseItem();
+    public static Item GOLD_ORE_CLUSTER = new BaseItem();
+
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spiruim_ingot"), SPIRIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_ingot"), NULL_INGOT);
+
+        //Ore Clusters
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "iron_ore_cluster"), IRON_ORE_CLUSTER);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "gold_ore_cluster"), GOLD_ORE_CLUSTER);
 
         //Tools
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_pickaxe"), ELEMENTAL_PICKAXE);

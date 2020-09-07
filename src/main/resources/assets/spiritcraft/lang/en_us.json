@@ -17,5 +17,7 @@
   "block.spiritcraft.vale_crystal_block": "Vale Crystal Block",
   "item.spiritcraft.spirium_ingot" : "Spirium Ingot",
   "item.spiritcraft.null_ingot" : "Null Ingot",
-  "item.spiritcraft.elemental_pickaxe" : "Pickaxe of the Infernal Sun"
+  "item.spiritcraft.elemental_pickaxe" : "Pickaxe of the Infernal Sun",
+  "item.spiritcraft.iron_ore_cluster" : "Iron Ore Cluster",
+  "item.spiritcraft.gold_ore_cluster" : "Gold Ore Cluster"
 }
