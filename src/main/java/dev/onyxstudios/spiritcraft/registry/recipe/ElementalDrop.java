@@ -1,5 +1,6 @@
 package dev.onyxstudios.spiritcraft.registry.recipe;
 
+import dev.onyxstudios.spiritcraft.registry.ModRecipes;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
@@ -17,9 +18,10 @@ public class ElementalDrop implements Recipe<Inventory> {
     protected ItemStack result;
 
     public ElementalDrop(Identifier id, Ingredient source, ItemStack result) {
+        this.recipeType = ModRecipes.ELEMENTAL_DROPS_TYPE;
         this.id = id;
-        this. source = source;
-        this. result  = result;
+        this.source = source;
+        this.result = result;
     }
 
     @Override
@@ -27,6 +29,7 @@ public class ElementalDrop implements Recipe<Inventory> {
         if(source.test(inv.getStack(0))) {
             return true;
         }
+
         return false;
     }
 
@@ -52,7 +55,7 @@ public class ElementalDrop implements Recipe<Inventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return null;
+        return ModRecipes.ELEMENTAL_DROPS_SERIALIZER;
     }
 
     @Override

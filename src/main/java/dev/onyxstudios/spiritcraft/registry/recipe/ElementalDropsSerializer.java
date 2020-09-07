@@ -15,6 +15,7 @@ public class ElementalDropsSerializer implements RecipeSerializer<ElementalDrop>
     public ElementalDrop read(Identifier id, JsonObject json) {
         Ingredient ingredient = Ingredient.fromJson(json.get("ore"));
         ItemStack result = ShapedRecipe.getItemStack(JsonHelper.getObject(json, "result"));
+
         return new ElementalDrop(id, ingredient, result);
     }
 
