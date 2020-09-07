@@ -4,6 +4,6 @@
     "item": "spiritcraft:gold_ore_cluster"
   },
   "result": "minecraft:gold_ingot",
-  "experience" : 1.0,
-  "cookingtime" : 200
+  "experience": 1.0,
+  "cookingtime": 200
 }

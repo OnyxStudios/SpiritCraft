@@ -4,6 +4,6 @@
     "item": "spiritcraft:iron_ore_cluster"
   },
   "result": "minecraft:iron_ingot",
-  "experience" : 1.0,
-  "cookingtime" : 200
+  "experience": 1.0,
+  "cookingtime": 200
 }
