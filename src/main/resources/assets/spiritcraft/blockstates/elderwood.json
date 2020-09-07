@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "spiritcraft:block/elderwood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "spiritcraft:block/elderwood"
+    },
+    "axis=z": {
+      "model": "spiritcraft:block/elderwood",
+      "x": 90
+    }
+  }
+}

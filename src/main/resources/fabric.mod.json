@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "spiritcraft",
+  "version": "${version}",
+
+  "name": "SpiritCraft",
+  "description": "A Thaumcraft Inspired Remake",
+  "authors": [
+    "abused_master"
+  ],
+  "icon": "assets/spiritcraft/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "dev.onyxstudios.spiritcraft.SpiritCraft"
+    ],
+    "client": [
+      "dev.onyxstudios.spiritcraft.SpiritCraftClient"
+    ]
+  },
+  "mixins": [
+    "spiritcraft.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

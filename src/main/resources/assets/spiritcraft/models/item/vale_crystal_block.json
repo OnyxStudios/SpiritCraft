@@ -1,0 +1,29 @@
+{
+  "parent": "spiritcraft:block/crystals.obj",
+  "display": {
+    "firstperson_righthand": {
+      "translation": [0, 0, -2],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "firstperson_lefthand": {
+      "translation": [0, 0, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "gui": {
+      "rotation": [90, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    "ground": {
+      "translation": [0, 3, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_lefthand": {
+      "translation": [0, 5, 0],
+      "scale": [0.5, 0.5, 0.5]
+    },
+    "thirdperson_righthand": {
+      "translation": [0, 5, 0],
+      "scale": [0.5, 0.5, 0.5]
+    }
+  }
+}
