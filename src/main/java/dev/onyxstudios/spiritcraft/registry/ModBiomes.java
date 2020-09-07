@@ -2,7 +2,8 @@ package dev.onyxstudios.spiritcraft.registry;
 
 import com.mojang.serialization.Codec;
 import dev.onyxstudios.spiritcraft.SpiritCraft;
-import dev.onyxstudios.spiritcraft.blocks.ElderwoodTrunkPlacer;
+import dev.onyxstudios.spiritcraft.blocks.tree.ElderwoodTrunkPlacer;
+import dev.onyxstudios.spiritcraft.blocks.tree.SpiritwoodTrunkPlacer;
 import dev.onyxstudios.spiritcraft.mixins.BuiltinBiomesAccessor;
 import dev.onyxstudios.spiritcraft.mixins.SetBaseBiomesLayerAccessor;
 import dev.onyxstudios.spiritcraft.mixins.VanillaLayeredBiomeSourceAccessor;
@@ -64,7 +65,22 @@ public class ModBiomes {
                     new LargeOakTrunkPlacer(3, 11, 0),
                     new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
             ).ignoreVines().heightmap(Heightmap.Type.MOTION_BLOCKING).build());
+
+    public static ConfiguredFeature<TreeFeatureConfig, ?> SPIRITWOOD_FEATURE = Feature.TREE.configure(
+            new TreeFeatureConfig.Builder(
+                    new SimpleBlockStateProvider(ModBlocks.SPIRITWOOD_LOG.getDefaultState()),
+                    new SimpleBlockStateProvider(ModBlocks.SPIRITWOOD_LEAVES.getDefaultState()),
+                    new LargeOakFoliagePlacer(UniformIntDistribution.of(2), UniformIntDistribution.of(4), 4),
+                    new SpiritwoodTrunkPlacer(7, 0, 0),
+                    new TwoLayersFeatureSize(0, 0, 0, OptionalInt.of(4))
+            )
+                    .ignoreVines()
+                    .heightmap(Heightmap.Type.MOTION_BLOCKING)
+                    .build()
+    );
+
     public static TrunkPlacerType<? extends TrunkPlacer> ELDERWOOD_TRUNK_PLACER;
+    public static TrunkPlacerType<? extends TrunkPlacer> SPIRITWOOD_TRUNK_PLACER;
 
     public static ConfiguredFeature<?, ?> AURA_CRYSTAL_FEATURE = createOreFeature(ModBlocks.AURA_CRYSTAL_BLOCK, 4, 2, 30);
     public static ConfiguredFeature<?, ?> SOLARIS_CRYSTAL_FEATURE = createOreFeature(ModBlocks.SOLARIS_CRYSTAL_BLOCK, 4, 2, 30);
@@ -89,6 +105,7 @@ public class ModBiomes {
     private static void registerFeatures() {
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(SpiritCraft.MODID, "elderwood_oak_feature"), ELDERWOOD_OAK_FEATURE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(SpiritCraft.MODID, "elderwood_feature"), ELDERWOOD_FEATURE);
+        Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(SpiritCraft.MODID, "spiritwood_feature"), SPIRITWOOD_FEATURE);
 
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(SpiritCraft.MODID, "aura_crystal_feature"), AURA_CRYSTAL_FEATURE);
         Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, new Identifier(SpiritCraft.MODID, "solaris_crystal_feature"), SOLARIS_CRYSTAL_FEATURE);
@@ -99,6 +116,10 @@ public class ModBiomes {
 
         ELDERWOOD_TRUNK_PLACER = createTrunkPlacerType(ElderwoodTrunkPlacer.CODEC);
         ELDERWOOD_TRUNK_PLACER = Registry.register(Registry.TRUNK_PLACER_TYPE, new Identifier(SpiritCraft.MODID, "elderwood_trunk_placer"), ELDERWOOD_TRUNK_PLACER);
+
+
+        SPIRITWOOD_TRUNK_PLACER = createTrunkPlacerType(SpiritwoodTrunkPlacer.CODEC);
+        SPIRITWOOD_TRUNK_PLACER = Registry.register(Registry.TRUNK_PLACER_TYPE, new Identifier(SpiritCraft.MODID, "spiritwood_trunk_placer"), SPIRITWOOD_TRUNK_PLACER);
     }
 
     public static void registerWorldGen(GenerationSettings.Builder builder) {
@@ -132,8 +153,9 @@ public class ModBiomes {
         DefaultBiomeFeatures.addDefaultFlowers(builder);
         DefaultBiomeFeatures.addDefaultMushrooms(builder);
         builder.structureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);
-        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ELDERWOOD_FEATURE);
         builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ELDERWOOD_OAK_FEATURE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, ELDERWOOD_FEATURE);
+        builder.feature(GenerationStep.Feature.VEGETAL_DECORATION, SPIRITWOOD_FEATURE);
 
         return new Biome.Builder()
                 .precipitation(Biome.Precipitation.RAIN)
@@ -144,9 +166,9 @@ public class ModBiomes {
                 .downfall(0.6f)
                 .effects(
                         new BiomeEffects.Builder()
-                                .waterColor(0x00c9db)
+                                .waterColor(0x32afed)
                                 .waterFogColor(329011)
-                                .grassColor(0x46b3bd)
+                                .grassColor(0x3dbfe3)
                                 .fogColor(12638463)
                                 .skyColor(getSkyColor(0.85f))
                                 .build()

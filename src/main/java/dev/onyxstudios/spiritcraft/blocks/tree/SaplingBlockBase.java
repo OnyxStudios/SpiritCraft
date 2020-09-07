@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.blocks;
+package dev.onyxstudios.spiritcraft.blocks.tree;
 
 import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;

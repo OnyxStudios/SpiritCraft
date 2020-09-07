@@ -2,9 +2,12 @@ package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.blocks.CrystalBlock;
-import dev.onyxstudios.spiritcraft.blocks.ElderwoodSaplingGenerator;
-import dev.onyxstudios.spiritcraft.blocks.SaplingBlockBase;
+import dev.onyxstudios.spiritcraft.blocks.tree.ElderwoodSaplingGenerator;
+import dev.onyxstudios.spiritcraft.blocks.tree.SaplingBlockBase;
+import dev.onyxstudios.spiritcraft.blocks.tree.SpiritwoodSaplingGenerator;
 import dev.onyxstudios.spiritcraft.items.BlockItemCrystal;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
@@ -24,6 +27,12 @@ public class ModBlocks {
     public static Block ELDERWOOD_LEAVES = new LeavesBlock(Block.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().suffocates((state, world, pos) -> false).blockVision((state, world, pos) -> false));
     public static Block ELDERWOOD_SAPLING = new SaplingBlockBase(new ElderwoodSaplingGenerator());
 
+    public static int SPIRITWOOD_LEAVES_COLOR = 0x5c95ff;
+    public static Block SPIRITWOOD = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static Block SPIRITWOOD_LOG = new PillarBlock(Block.Settings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static Block SPIRITWOOD_LEAVES = new LeavesBlock(Block.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().suffocates((state, world, pos) -> false).blockVision((state, world, pos) -> false));
+    public static Block SPIRITWOOD_SAPLING = new SaplingBlockBase(new SpiritwoodSaplingGenerator());
+
     //Crystals
     public static Block AURA_CRYSTAL_BLOCK = new CrystalBlock();
     public static Block SOLARIS_CRYSTAL_BLOCK = new CrystalBlock();
@@ -37,6 +46,11 @@ public class ModBlocks {
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_log"), ELDERWOOD_LOG);
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_leaves"), ELDERWOOD_LEAVES);
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_sapling"), ELDERWOOD_SAPLING);
+
+        registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood"), SPIRITWOOD);
+        registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_log"), SPIRITWOOD_LOG);
+        registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_leaves"), SPIRITWOOD_LEAVES);
+        registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_sapling"), SPIRITWOOD_SAPLING);
 
         //Crystals
         registerBlock(new Identifier(SpiritCraft.MODID, "aura_crystal_block"), AURA_CRYSTAL_BLOCK, new BlockItemCrystal(AURA_CRYSTAL_BLOCK));
@@ -52,6 +66,7 @@ public class ModBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_SAPLING, 5, 5);
     }
 
+    @Environment(EnvType.CLIENT)
     public static void registerRenders() {
         BlockRenderLayerMap.INSTANCE.putBlock(AURA_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(SOLARIS_CRYSTAL_BLOCK, RenderLayer.getCutout());
@@ -60,9 +75,13 @@ public class ModBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(ORDIN_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(VALE_CRYSTAL_BLOCK, RenderLayer.getCutout());
 
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ELDERWOOD_SAPLING, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ELDERWOOD_SAPLING, RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> GREATWOOD_LEAVES_COLOR, ELDERWOOD_LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> GREATWOOD_LEAVES_COLOR, ELDERWOOD_LEAVES);
+
+        BlockRenderLayerMap.INSTANCE.putBlock(SPIRITWOOD_SAPLING, RenderLayer.getCutout());
+        ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> SPIRITWOOD_LEAVES_COLOR, SPIRITWOOD_LEAVES);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> SPIRITWOOD_LEAVES_COLOR, SPIRITWOOD_LEAVES);
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> 0xc3af49, AURA_CRYSTAL_BLOCK);
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> 0xf4503a, SOLARIS_CRYSTAL_BLOCK);

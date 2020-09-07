@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "spiritcraft:elderwood_leaves"
+    "spiritcraft:elderwood_leaves",
+    "spiritcraft:spiritwood_leaves"
   ]
 }

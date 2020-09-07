@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.blocks;
+package dev.onyxstudios.spiritcraft.blocks.tree;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -33,7 +33,6 @@ public class ElderwoodTrunkPlacer extends TrunkPlacer {
     @Override
     public List<FoliagePlacer.TreeNode> generate(ModifiableTestableWorld world, Random random, int trunkHeight, BlockPos pos, Set<BlockPos> set, BlockBox blockBox, TreeFeatureConfig treeFeatureConfig) {
         List<FoliagePlacer.TreeNode> foliageNodes = new ArrayList<>();
-        world.removeBlock(pos, false);
 
         for (int y = 0; y < trunkHeight; y++) {
             if(y >= 5) {

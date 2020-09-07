@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "spiritcraft:block/spiritwood_log_top",
+    "side": "spiritcraft:block/spiritwood_log"
+  }
+}

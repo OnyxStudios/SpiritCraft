@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.blocks;
+package dev.onyxstudios.spiritcraft.blocks.tree;
 
 import dev.onyxstudios.spiritcraft.registry.ModBiomes;
 import net.minecraft.block.sapling.LargeTreeSaplingGenerator;

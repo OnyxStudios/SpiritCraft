@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "spiritcraft:elderwood_log",
-    "spiritcraft:elderwood"
+    "spiritcraft:elderwood",
+    "spiritcraft:spiritwood_log",
+    "spiritcraft:spiritwood"
   ]
 }
