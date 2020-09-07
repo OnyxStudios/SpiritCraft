@@ -4,6 +4,7 @@
     "tag": "minecraft:gold_ores"
   },
   "result": {
-    "item": "spiritcraft:gold_ore_cluster"
+    "item": "spiritcraft:gold_ore_cluster",
+    "count": 2
   }
 }
