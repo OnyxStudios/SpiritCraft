@@ -8,7 +8,8 @@
     "VanillaLayeredBiomeSourceAccessor",
     "SetBaseBiomesLayerAccessor",
     "DefaultBiomeFeaturesMixin",
-    "BlockMixin"
+    "BlockMixin",
+    "CookingRecipeSerializerMixin"
   ],
   "client": [
   ],
