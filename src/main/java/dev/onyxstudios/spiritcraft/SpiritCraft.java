@@ -1,9 +1,6 @@
 package dev.onyxstudios.spiritcraft;
 
-import dev.onyxstudios.spiritcraft.registry.ModBiomes;
-import dev.onyxstudios.spiritcraft.registry.ModBlocks;
-import dev.onyxstudios.spiritcraft.registry.ModEntities;
-import dev.onyxstudios.spiritcraft.registry.ModItems;
+import dev.onyxstudios.spiritcraft.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -18,12 +15,12 @@ public class SpiritCraft implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger("SpiritCraft");
     public static ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MODID, "itemgroup"), () -> new ItemStack(ModBlocks.ELDERWOOD_LOG));
 
-
     @Override
     public void onInitialize() {
         ModBlocks.register();
         ModItems.register();
         ModBiomes.register();
         ModEntities.register();
+        ModRecipes.register();
     }
 }

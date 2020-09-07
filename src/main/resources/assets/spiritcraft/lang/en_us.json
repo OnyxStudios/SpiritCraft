@@ -14,5 +14,8 @@
   "block.spiritcraft.hydra_crystal_block": "Hydra Crystal Block",
   "block.spiritcraft.tellus_crystal_block": "Tellus Crystal Block",
   "block.spiritcraft.ordin_crystal_block": "Ordin Crystal Block",
-  "block.spiritcraft.vale_crystal_block": "Vale Crystal Block"
+  "block.spiritcraft.vale_crystal_block": "Vale Crystal Block",
+  "item.spiritcraft.spirium_ingot" : "Spirium Ingot",
+  "item.spiritcraft.null_ingot" : "Null Ingot",
+  "item.spiritcraft.elemental_pickaxe" : "Pickaxe of the Infernal Sun"
 }

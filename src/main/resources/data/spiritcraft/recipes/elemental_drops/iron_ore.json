@@ -1,0 +1,10 @@
+{
+  "type": "spiritcraft:elemental_drops",
+  "ore": {
+    "item": "minecraft:iron_ore"
+  },
+  "result": {
+    "item": "minecraft:iron_ingot",
+    "count": 2
+  }
+}
