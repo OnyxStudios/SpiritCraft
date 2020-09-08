@@ -20,11 +20,21 @@ public class ModItems {
 
     //Shards
     public static Item AURA_CRYSTAL_SHARD = new BaseItem();
+    public static Item SOLARIS_CRYSTAL_SHARD = new BaseItem();
+    public static Item HYDRA_CRYSTAL_SHARD = new BaseItem();
+    public static Item TELLUS_CRYSTAL_SHARD = new BaseItem();
+    public static Item ORDIN_CRYSTAL_SHARD = new BaseItem();
+    public static Item VALE_CRYSTAL_SHARD = new BaseItem();
 
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_ingot"), SPIRIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_ingot"), NULL_INGOT);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "aura_crystal_shard"), AURA_CRYSTAL_SHARD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "solaris_crystal_shard"), SOLARIS_CRYSTAL_SHARD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "hydra_crystal_shard"), HYDRA_CRYSTAL_SHARD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "tellus_crystal_shard"), TELLUS_CRYSTAL_SHARD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "ordin_crystal_shard"), ORDIN_CRYSTAL_SHARD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "vale_crystal_shard"), VALE_CRYSTAL_SHARD);
 
         //Ore Clusters
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "iron_ore_cluster"), IRON_ORE_CLUSTER);
@@ -37,5 +47,10 @@ public class ModItems {
     @Environment(EnvType.CLIENT)
     public static void registerRenders() {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xc3af49, AURA_CRYSTAL_SHARD);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xf4503a, SOLARIS_CRYSTAL_SHARD);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x3accf4, HYDRA_CRYSTAL_SHARD);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x07c700, TELLUS_CRYSTAL_SHARD);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xfffafc, ORDIN_CRYSTAL_SHARD);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x242424, VALE_CRYSTAL_SHARD);
     }
 }
