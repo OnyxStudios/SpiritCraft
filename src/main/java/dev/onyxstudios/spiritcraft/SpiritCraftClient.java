@@ -5,6 +5,7 @@ import dev.onyxstudios.spiritcraft.client.ClientTickHandler;
 import dev.onyxstudios.spiritcraft.client.shaders.Shaders;
 import dev.onyxstudios.spiritcraft.registry.ModBlocks;
 import dev.onyxstudios.spiritcraft.registry.ModEntities;
+import dev.onyxstudios.spiritcraft.registry.ModRenders;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -23,6 +24,7 @@ public class SpiritCraftClient implements ClientModInitializer {
         ClientTickHandler.registerClientTick();
         ModEntities.registerRenders();
         ModBlocks.registerRenders();
+        ModRenders.registerRenders();
 
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override
