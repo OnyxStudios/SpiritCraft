@@ -22,5 +22,6 @@ public class SpiritCraft implements ModInitializer {
         ModBiomes.register();
         ModEntities.register();
         ModRecipes.register();
+        ModSounds.register();
     }
 }

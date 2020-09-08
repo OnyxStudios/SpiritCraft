@@ -4,6 +4,7 @@ import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.client.render.SCRenderLayers;
 import dev.onyxstudios.spiritcraft.registry.ModBlocks;
 import dev.onyxstudios.spiritcraft.registry.ModRenders;
+import dev.onyxstudios.spiritcraft.registry.ModSounds;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.util.math.Vector3f;
@@ -12,6 +13,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
@@ -75,5 +77,6 @@ public class ElementalPickaxe extends PickaxeItem {
         }
 
         player.getStackInHand(hand).damage(5, player, playerEntity -> {});
+        player.playSound(ModSounds.ELEMENTAL_PICKAXE_SCAN, SoundCategory.BLOCKS, 0.2f, 1.0f);
     }
 }
