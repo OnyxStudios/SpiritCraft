@@ -2,6 +2,7 @@ package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.items.BaseItem;
+import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalPickaxe;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -14,9 +15,12 @@ public class ModItems {
 
     public static Item SPIRIUM_INGOT = new BaseItem();
     public static Item NULL_INGOT = new BaseItem();
-    public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
     public static Item IRON_ORE_CLUSTER = new BaseItem();
     public static Item GOLD_ORE_CLUSTER = new BaseItem();
+
+    //Tools
+    public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
+    public static Item ELEMENTAL_AXE = new ElementalAxe();
 
     //Shards
     public static Item AURA_CRYSTAL_SHARD = new BaseItem();
@@ -42,6 +46,7 @@ public class ModItems {
 
         //Tools
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_pickaxe"), ELEMENTAL_PICKAXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_axe"), ELEMENTAL_AXE);
     }
 
     @Environment(EnvType.CLIENT)

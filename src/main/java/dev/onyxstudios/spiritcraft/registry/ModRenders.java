@@ -1,9 +1,17 @@
 package dev.onyxstudios.spiritcraft.registry;
 
+import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.client.particles.MagicBubbleParticle;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
@@ -17,8 +25,11 @@ public class ModRenders {
     //For one time renders
     public static Map<BiConsumer<MatrixStack, VertexConsumerProvider>, Map.Entry<Long, Integer>> scheduledRenders = new HashMap<>();
 
-    public static void registerRenders() {
-        //Any RenderWorldLast renders
+    public static DefaultParticleType MAGIC_BUBBLE_TYPE = FabricParticleTypes.simple();
+
+    public static void register() {
+        registerParticle(new Identifier(SpiritCraft.MODID, "magic_bubble"), MAGIC_BUBBLE_TYPE, MagicBubbleParticle.Factory::new);
+        //Any RenderWorldLast renders here too
     }
 
     public static void renderSchedules(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider) {
@@ -31,5 +42,10 @@ public class ModRenders {
 
     public static void scheduleRender(BiConsumer<MatrixStack, VertexConsumerProvider> consumer, int duration) {
         scheduledRenders.put(consumer, new AbstractMap.SimpleEntry<>(System.currentTimeMillis(), duration));
+    }
+
+    private static void registerParticle(Identifier id, ParticleType particleType, ParticleFactoryRegistry.PendingParticleFactory factory) {
+        Registry.register(Registry.PARTICLE_TYPE, id, particleType);
+        ParticleFactoryRegistry.getInstance().register(particleType, factory);
     }
 }

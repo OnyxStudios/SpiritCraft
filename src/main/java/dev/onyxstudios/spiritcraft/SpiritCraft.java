@@ -1,8 +1,10 @@
 package dev.onyxstudios.spiritcraft;
 
+import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
 import dev.onyxstudios.spiritcraft.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
@@ -23,5 +25,8 @@ public class SpiritCraft implements ModInitializer {
         ModEntities.register();
         ModRecipes.register();
         ModSounds.register();
+        ModPackets.registerServer();
+
+        PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> !ElementalAxe.breakLogs(world, pos, player));
     }
 }
