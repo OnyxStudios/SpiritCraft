@@ -9,7 +9,8 @@
     "SetBaseBiomesLayerAccessor",
     "DefaultBiomeFeaturesMixin",
     "BlockMixin",
-    "CookingRecipeSerializerMixin"
+    "CookingRecipeSerializerMixin",
+    "AxeItemMixin"
   ],
   "client": [
     "WorldRendererMixin"

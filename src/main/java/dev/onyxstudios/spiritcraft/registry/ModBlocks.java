@@ -21,14 +21,21 @@ import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ModBlocks {
 
     public static final Tag<Block> ORES = TagRegistry.block(new Identifier("c", "ores"));
+    public static Map<Block, Block> CUSTOM_STRIPPED_WOOD = new HashMap<>();
+
     public static int GREATWOOD_LEAVES_COLOR = 0x1aad77;
     public static Block ELDERWOOD = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static Block ELDERWOOD_LOG = new PillarBlock(Block.Settings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
     public static Block ELDERWOOD_LEAVES = new LeavesBlock(Block.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().suffocates((state, world, pos) -> false).blockVision((state, world, pos) -> false));
     public static Block ELDERWOOD_SAPLING = new SaplingBlockBase(new ElderwoodSaplingGenerator());
+    public static Block STRIPPED_ELDERWOOD_LOG = new PillarBlock(Block.Settings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
+    public static Block ELDERWOOD_PLANKS = new Block(Block.Settings.of(Material.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
 
     public static int SPIRITWOOD_LEAVES_COLOR = 0x5c95ff;
     public static Block SPIRITWOOD = new PillarBlock(AbstractBlock.Settings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sounds(BlockSoundGroup.WOOD));
@@ -49,6 +56,8 @@ public class ModBlocks {
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_log"), ELDERWOOD_LOG);
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_leaves"), ELDERWOOD_LEAVES);
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_sapling"), ELDERWOOD_SAPLING);
+        registerBlock(new Identifier(SpiritCraft.MODID, "stripped_elderwood_log"), STRIPPED_ELDERWOOD_LOG);
+        registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_planks"), ELDERWOOD_PLANKS);
 
         registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood"), SPIRITWOOD);
         registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_log"), SPIRITWOOD_LOG);
@@ -67,6 +76,10 @@ public class ModBlocks {
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_LEAVES, 30, 60);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_SAPLING, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(STRIPPED_ELDERWOOD_LOG, 5, 5);
+        FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_PLANKS, 5, 5);
+
+        CUSTOM_STRIPPED_WOOD.put(ELDERWOOD_LOG, STRIPPED_ELDERWOOD_LOG);
     }
 
     @Environment(EnvType.CLIENT)
