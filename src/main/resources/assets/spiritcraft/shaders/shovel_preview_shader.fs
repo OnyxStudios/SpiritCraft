@@ -4,6 +4,10 @@ uniform sampler2D textureSampler;
 uniform float time;
 
 void main() {
+    if(texture2D(textureSampler, gl_TexCoord[0].xy).a < 0.25) {
+        discard;
+    }
+
     float slowTime = time / 25;
     vec3 uv = vec3((gl_TexCoord[0].xy * 0.5), 0.0);
     vec3 sp = vec3(sin(uv.x + slowTime), cos(uv.y + slowTime), sin(uv.x + slowTime));

@@ -1,9 +1,13 @@
 package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
+import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 
@@ -13,8 +17,21 @@ public class ModPackets {
 
     public static Identifier PACKET_SPAWN_BUBBLE = new Identifier(SpiritCraft.MODID, "packet_spawn_bubble");
     public static Identifier PACKET_SPAWN_STARS = new Identifier(SpiritCraft.MODID, "packet_spawn_stars");
+    public static Identifier PACKET_ROTATE_SHOVEL = new Identifier(SpiritCraft.MODID, "packet_rotate_shovel");
 
     public static void registerServer() {
+        ServerSidePacketRegistry.INSTANCE.register(PACKET_ROTATE_SHOVEL,  (context, buf) -> {
+            if(context.getPlayer() != null) {
+                ItemStack stack = context.getPlayer().getMainHandStack();
+                CompoundTag tag = stack.getOrCreateTag();
+
+                if(tag.contains(ElementalShovel.ROTATION)) {
+                    tag.putString(ElementalShovel.ROTATION, tag.getString(ElementalShovel.ROTATION).equals(ElementalShovel.ROTATION_FLOOR) ? ElementalShovel.ROTATION_WALL : ElementalShovel.ROTATION_FLOOR);
+                }else {
+                    tag.putString(ElementalShovel.ROTATION, ElementalShovel.ROTATION_WALL);
+                }
+            }
+        });
     }
 
     @Environment(EnvType.CLIENT)

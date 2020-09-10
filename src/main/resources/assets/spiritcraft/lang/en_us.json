@@ -1,5 +1,7 @@
 {
   "itemGroup.spiritcraft.itemgroup" : "SpiritCraft",
+  "category.spiritcraft.keybinds": "Spiritcraft Keys",
+  "key.spiritcraft.shovel_rotate": "Rotate Shovel Placement",
   "biome.spiritcraft.spirit_forest": "Spirit Forest",
   "block.spiritcraft.elderwood": "Elderwood",
   "block.spiritcraft.elderwood_log": "Elderwood Log",

@@ -24,6 +24,7 @@ import net.minecraft.screen.PlayerScreenHandler;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
@@ -43,7 +44,11 @@ public class ElementalShovelRenderer {
                 if(!ElementalShovel.EFFECTIVE_BLOCKS.contains(source.getBlock())) return;
                 List<BlockPos> placePos = new ArrayList<>();
                 VertexConsumer buffer = vertexConsumer.getBuffer(getInstance());
-                for (BlockPos pos : BlockUtils.get3x3Area(target.getSide(), target.getBlockPos().offset(target.getSide()))) {
+
+                String rotation = player.getMainHandStack().getOrCreateTag().getString(ElementalShovel.ROTATION);
+                if(rotation.isEmpty()) rotation = ElementalShovel.ROTATION_FLOOR;
+                Direction rotationDir = rotation == ElementalShovel.ROTATION_FLOOR ? target.getSide() : target.getSide().equals(Direction.UP) || target.getSide().equals(Direction.DOWN) ? player.getHorizontalFacing() : target.getSide();
+                for (BlockPos pos : BlockUtils.get3x3Area(rotationDir, target.getBlockPos().offset(target.getSide()))) {
                     if(world.isAir(pos)) placePos.add(pos);
                 }
 

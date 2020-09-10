@@ -4,6 +4,7 @@ import dev.onyxstudios.foml.obj.OBJLoader;
 import dev.onyxstudios.spiritcraft.client.ClientTickHandler;
 import dev.onyxstudios.spiritcraft.client.shaders.Shaders;
 import dev.onyxstudios.spiritcraft.registry.*;
+import dev.onyxstudios.spiritcraft.utils.KeyBinds;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
@@ -25,6 +26,7 @@ public class SpiritCraftClient implements ClientModInitializer {
         ModItems.registerRenders();
         ModRenders.register();
         ModPackets.registerClient();
+        KeyBinds.register();
 
         ResourceManagerHelper.get(ResourceType.CLIENT_RESOURCES).registerReloadListener(new SimpleSynchronousResourceReloadListener() {
             @Override

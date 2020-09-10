@@ -23,6 +23,9 @@ import java.util.Set;
 public class ElementalShovel extends ShovelItem {
 
     public static List<Block> EFFECTIVE_BLOCKS = new ArrayList<>();
+    public static final String ROTATION = "rotation";
+    public static final String ROTATION_FLOOR = "floor";
+    public static final String ROTATION_WALL = "wall";
 
     public ElementalShovel() {
         super(SCToolMaterials.ELEMENTAL, SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(SpiritCraft.GROUP));
@@ -30,7 +33,7 @@ public class ElementalShovel extends ShovelItem {
 
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
-        if(EFFECTIVE_BLOCKS.contains(context.getWorld().getBlockState(context.getBlockPos()).getBlock())) {
+        if(!context.getWorld().isClient && EFFECTIVE_BLOCKS.contains(context.getWorld().getBlockState(context.getBlockPos()).getBlock())) {
             int placedBlocks = BlockUtils.place3x3(context.getWorld(), context.getBlockPos(), context.getWorld().getBlockState(context.getBlockPos()), context.getPlayer(), context.getSide());
             context.getPlayer().getMainHandStack().damage(placedBlocks, context.getPlayer(), entity -> {});
 

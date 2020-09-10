@@ -1,5 +1,6 @@
 package dev.onyxstudios.spiritcraft.utils;
 
+import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import dev.onyxstudios.spiritcraft.registry.ModPackets;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.BlockState;
@@ -25,11 +26,14 @@ public class BlockUtils {
         int placedBlocks = 0;
 
         if(availableBlocks > 0) {
-            Iterable<BlockPos> placeArea = get3x3Area(direction, pos.offset(direction));
+            String rotation = player.getMainHandStack().getOrCreateTag().getString(ElementalShovel.ROTATION);
+            if(rotation.isEmpty()) rotation = ElementalShovel.ROTATION_FLOOR;
+            Direction rotationDir = rotation == ElementalShovel.ROTATION_FLOOR ? direction : direction.equals(Direction.UP) || direction.equals(Direction.DOWN) ? player.getHorizontalFacing() : direction;
+            List<BlockPos> placeArea = get3x3Area(rotationDir, pos.offset(direction));
             for (BlockPos placePos : placeArea) {
                 if(!world.isAir(placePos) || placedBlocks >= availableBlocks) continue;
                 if(InventoryUtils.consumeOne(player, new ItemStack(source.getBlock()))) {
-                    world.setBlockState(placePos, source, 1);
+                    world.setBlockState(placePos, source, 2);
                     placedBlocks++;
 
                     if(!world.isClient && player instanceof ServerPlayerEntity) {
