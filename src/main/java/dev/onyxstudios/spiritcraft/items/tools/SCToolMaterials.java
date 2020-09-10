@@ -5,8 +5,8 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
 public enum  SCToolMaterials implements ToolMaterial {
-    SPIRIUM(3,500,7.0F,2.5F,22, Ingredient.ofItems(ModItems.SPIRIUM_INGOT)),
-    NULL(4, 150, 8F, 3, 10, Ingredient.ofItems(ModItems.NULL_INGOT)),
+    SPIRIUM(3,500,2.5F,7,22, Ingredient.ofItems(ModItems.SPIRIUM_INGOT)),
+    NULL(4, 150, 4, 9, 10, Ingredient.ofItems(ModItems.NULL_INGOT)),
     ELEMENTAL(3, 1500, 3, 8, 18, Ingredient.ofItems(ModItems.SPIRIUM_INGOT));
 
     private int miningLevel;

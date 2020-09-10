@@ -5,6 +5,8 @@ import dev.onyxstudios.spiritcraft.items.BaseItem;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalHoe;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalPickaxe;
+import dev.onyxstudios.spiritcraft.items.tools.SCToolMaterials;
+import dev.onyxstudios.spiritcraft.items.tools.base.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -23,6 +25,16 @@ public class ModItems {
     public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
     public static Item ELEMENTAL_AXE = new ElementalAxe();
     public static Item ELEMENTAL_HOE = new ElementalHoe();
+    public static Item SPIRIUM_PICKAXE = new BasePickaxe(SCToolMaterials.SPIRIUM);
+    public static Item SPIRIUM_AXE = new BaseAxe(SCToolMaterials.SPIRIUM);
+    public static Item SPIRIUM_HOE = new BaseHoe(SCToolMaterials.SPIRIUM);
+    public static Item SPIRIUM_SHOVEL = new BaseShovel(SCToolMaterials.SPIRIUM);
+    public static Item SPIRIUM_SWORD = new BaseSword(SCToolMaterials.SPIRIUM);
+    public static Item NULL_PICKAXE = new BasePickaxe(SCToolMaterials.NULL);
+    public static Item NULL_AXE = new BaseAxe(SCToolMaterials.NULL);
+    public static Item NULL_HOE = new BaseHoe(SCToolMaterials.NULL);
+    public static Item NULL_SHOVEL = new BaseShovel(SCToolMaterials.NULL);
+    public static Item NULL_SWORD = new BaseSword(SCToolMaterials.NULL);
 
     //Shards
     public static Item AURA_CRYSTAL_SHARD = new BaseItem();
@@ -50,6 +62,16 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_pickaxe"), ELEMENTAL_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_axe"), ELEMENTAL_AXE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_hoe"), ELEMENTAL_HOE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_pickaxe"), SPIRIUM_PICKAXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_axe"), SPIRIUM_AXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_hoe"), SPIRIUM_HOE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_shovel"), SPIRIUM_SHOVEL);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_sword"), SPIRIUM_SWORD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_pickaxe"), NULL_PICKAXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_axe"), NULL_AXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_hoe"), NULL_HOE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_shovel"), NULL_SHOVEL);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_sword"), NULL_SWORD);
     }
 
     @Environment(EnvType.CLIENT)
