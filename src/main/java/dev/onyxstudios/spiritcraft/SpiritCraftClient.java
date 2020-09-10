@@ -38,6 +38,8 @@ public class SpiritCraftClient implements ClientModInitializer {
             }
         });
 
-        ModelLoadingRegistry.INSTANCE.registerAppender((resourceManager, consumer) -> consumer.accept(new ModelIdentifier(new Identifier(SpiritCraft.MODID, "base_crystal"), "")));
+        ModelLoadingRegistry.INSTANCE.registerAppender((resourceManager, consumer) -> {
+            consumer.accept(new ModelIdentifier(new Identifier(SpiritCraft.MODID, "base_crystal"), ""));
+        });
     }
 }

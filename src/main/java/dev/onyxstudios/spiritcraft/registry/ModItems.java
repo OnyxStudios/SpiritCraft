@@ -4,6 +4,7 @@ import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.items.BaseItem;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalPickaxe;
+import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -21,6 +22,7 @@ public class ModItems {
     //Tools
     public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
     public static Item ELEMENTAL_AXE = new ElementalAxe();
+    public static Item ELEMENTAL_SHOVEL = new ElementalShovel();
 
     //Shards
     public static Item AURA_CRYSTAL_SHARD = new BaseItem();
@@ -47,6 +49,7 @@ public class ModItems {
         //Tools
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_pickaxe"), ELEMENTAL_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_axe"), ELEMENTAL_AXE);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_shovel"), ELEMENTAL_SHOVEL);
     }
 
     @Environment(EnvType.CLIENT)

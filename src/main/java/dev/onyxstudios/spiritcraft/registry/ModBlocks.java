@@ -1,6 +1,7 @@
 package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.blocks.ConnectedBlockBase;
 import dev.onyxstudios.spiritcraft.blocks.CrystalBlock;
 import dev.onyxstudios.spiritcraft.blocks.tree.ElderwoodSaplingGenerator;
 import dev.onyxstudios.spiritcraft.blocks.tree.SaplingBlockBase;
@@ -10,6 +11,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.block.*;
@@ -43,6 +45,8 @@ public class ModBlocks {
     public static Block SPIRITWOOD_LEAVES = new LeavesBlock(Block.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().suffocates((state, world, pos) -> false).blockVision((state, world, pos) -> false));
     public static Block SPIRITWOOD_SAPLING = new SaplingBlockBase(new SpiritwoodSaplingGenerator());
 
+    public static ConnectedBlockBase WARDED_GLASS = new ConnectedBlockBase(FabricBlockSettings.of(Material.GLASS).strength(0.3f).nonOpaque());
+
     //Crystals
     public static Block AURA_CRYSTAL_BLOCK = new CrystalBlock();
     public static Block SOLARIS_CRYSTAL_BLOCK = new CrystalBlock();
@@ -63,6 +67,7 @@ public class ModBlocks {
         registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_log"), SPIRITWOOD_LOG);
         registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_leaves"), SPIRITWOOD_LEAVES);
         registerBlock(new Identifier(SpiritCraft.MODID, "spiritwood_sapling"), SPIRITWOOD_SAPLING);
+        registerBlock(new Identifier(SpiritCraft.MODID, "warded_glass"), WARDED_GLASS);
 
         //Crystals
         registerBlock(new Identifier(SpiritCraft.MODID, "aura_crystal_block"), AURA_CRYSTAL_BLOCK, new BlockItemCrystal(AURA_CRYSTAL_BLOCK));
@@ -90,6 +95,7 @@ public class ModBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(TELLUS_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ORDIN_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(VALE_CRYSTAL_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(WARDED_GLASS, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ELDERWOOD_SAPLING, RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> GREATWOOD_LEAVES_COLOR, ELDERWOOD_LEAVES);

@@ -1,6 +1,8 @@
 package dev.onyxstudios.spiritcraft;
 
+import dev.onyxstudios.spiritcraft.api.events.BlockBreakEvent;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
+import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import dev.onyxstudios.spiritcraft.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -28,5 +30,6 @@ public class SpiritCraft implements ModInitializer {
         ModPackets.registerServer();
 
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> !ElementalAxe.breakLogs(world, pos, player));
+        BlockBreakEvent.EVENT.register((world, player, state, pos, direction) -> ElementalShovel.shovelDirt(world, player, state, pos, direction));
     }
 }

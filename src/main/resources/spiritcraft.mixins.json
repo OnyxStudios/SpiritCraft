@@ -10,7 +10,8 @@
     "DefaultBiomeFeaturesMixin",
     "BlockMixin",
     "CookingRecipeSerializerMixin",
-    "AxeItemMixin"
+    "AxeItemMixin",
+    "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
     "WorldRendererMixin"

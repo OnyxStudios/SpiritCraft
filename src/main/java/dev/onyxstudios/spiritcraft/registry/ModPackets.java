@@ -12,6 +12,7 @@ import java.util.Random;
 public class ModPackets {
 
     public static Identifier PACKET_SPAWN_BUBBLE = new Identifier(SpiritCraft.MODID, "packet_spawn_bubble");
+    public static Identifier PACKET_SPAWN_STARS = new Identifier(SpiritCraft.MODID, "packet_spawn_stars");
 
     public static void registerServer() {
     }
@@ -26,6 +27,17 @@ public class ModPackets {
             if(context.getPlayer() != null && context.getPlayer().world != null) {
                 for (int i = 0; i < particleAmount; i++)
                     context.getPlayer().world.addParticle(ModRenders.MAGIC_BUBBLE_TYPE, false, particlePos.getX() + random.nextDouble(), particlePos.getY() + random.nextDouble(), particlePos.getZ() + random.nextDouble(), 0, 0, 0);
+            }
+        });
+
+        ClientSidePacketRegistry.INSTANCE.register(PACKET_SPAWN_STARS, (context, buf) -> {
+            Random random = new Random();
+            BlockPos particlePos = buf.readBlockPos();
+            int particleAmount = buf.readInt();
+
+            if(context.getPlayer() != null && context.getPlayer().world != null) {
+                for (int i = 0; i < particleAmount; i++)
+                    context.getPlayer().world.addParticle(ModRenders.MAGIC_STAR_TYPE, false, particlePos.getX() + random.nextDouble(), particlePos.getY() + random.nextDouble(), particlePos.getZ() + random.nextDouble(), 0, 0, 0);
             }
         });
     }

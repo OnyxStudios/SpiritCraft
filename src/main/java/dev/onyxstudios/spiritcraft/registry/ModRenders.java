@@ -1,7 +1,10 @@
 package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.api.events.client.RenderInWorldEvent;
 import dev.onyxstudios.spiritcraft.client.particles.MagicBubbleParticle;
+import dev.onyxstudios.spiritcraft.client.particles.MagicStarParticle;
+import dev.onyxstudios.spiritcraft.client.render.ElementalShovelRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -26,10 +29,13 @@ public class ModRenders {
     public static Map<BiConsumer<MatrixStack, VertexConsumerProvider>, Map.Entry<Long, Integer>> scheduledRenders = new HashMap<>();
 
     public static DefaultParticleType MAGIC_BUBBLE_TYPE = FabricParticleTypes.simple();
+    public static DefaultParticleType MAGIC_STAR_TYPE = FabricParticleTypes.simple();
 
     public static void register() {
         registerParticle(new Identifier(SpiritCraft.MODID, "magic_bubble"), MAGIC_BUBBLE_TYPE, MagicBubbleParticle.Factory::new);
-        //Any RenderWorldLast renders here too
+        registerParticle(new Identifier(SpiritCraft.MODID, "magic_star"), MAGIC_STAR_TYPE, MagicStarParticle.Factory::new);
+
+        RenderInWorldEvent.EVENT.register((world, player, stack, vertexConsumer, camera) -> ElementalShovelRenderer.render(world, player, stack, vertexConsumer, camera));
     }
 
     public static void renderSchedules(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider) {
