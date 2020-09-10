@@ -101,6 +101,8 @@ public class ElementalAxe extends AxeItem {
     }
 
     public static boolean breakLogs(World world, BlockPos pos, PlayerEntity player) {
+        if(player.isSneaking()) return false;
+
         if(!player.getMainHandStack().isEmpty() && player.getMainHandStack().isItemEqualIgnoreDamage(new ItemStack(ModItems.ELEMENTAL_AXE)) && BlockTags.LOGS.contains(world.getBlockState(pos).getBlock())) {
             BlockUtils.breakHighestBlock(world, pos, player, ElementalAxe.BREAK_RADIUS);
             player.getMainHandStack().damage(1, player, playerEntity -> {});
