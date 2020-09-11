@@ -13,6 +13,7 @@ public class CrystalShader extends ShaderProgram {
     protected int time;
     protected int crystalColor;
     protected int texture;
+
     public CrystalShader() {
         super(null, new Identifier(SpiritCraft.MODID, "shaders/crystals_shader.fs"));
     }

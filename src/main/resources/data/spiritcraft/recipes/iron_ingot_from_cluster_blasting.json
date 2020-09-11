@@ -1,0 +1,12 @@
+{
+  "type": "blasting",
+  "ingredient": {
+    "item": "spiritcraft:iron_ore_cluster"
+  },
+  "result": {
+    "item": "minecraft:iron_ingot",
+    "count": 2
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

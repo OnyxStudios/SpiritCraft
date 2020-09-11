@@ -7,9 +7,14 @@
     "BuiltinBiomesAccessor",
     "VanillaLayeredBiomeSourceAccessor",
     "SetBaseBiomesLayerAccessor",
-    "DefaultBiomeFeaturesMixin"
+    "DefaultBiomeFeaturesMixin",
+    "BlockMixin",
+    "CookingRecipeSerializerMixin",
+    "AxeItemMixin",
+    "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
+    "WorldRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
