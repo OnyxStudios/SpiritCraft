@@ -2,11 +2,7 @@ package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.items.BaseItem;
-import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
-import dev.onyxstudios.spiritcraft.items.tools.ElementalHoe;
-import dev.onyxstudios.spiritcraft.items.tools.ElementalPickaxe;
-import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
-import dev.onyxstudios.spiritcraft.items.tools.SCToolMaterials;
+import dev.onyxstudios.spiritcraft.items.tools.*;
 import dev.onyxstudios.spiritcraft.items.tools.base.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -23,6 +19,7 @@ public class ModItems {
     public static Item GOLD_ORE_CLUSTER = new BaseItem();
 
     //Tools
+    public static Item ELEMENTAL_SWORD = new ElementalSword();
     public static Item ELEMENTAL_PICKAXE = new ElementalPickaxe();
     public static Item ELEMENTAL_AXE = new ElementalAxe();
     public static Item ELEMENTAL_SHOVEL = new ElementalShovel();
@@ -61,6 +58,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "gold_ore_cluster"), GOLD_ORE_CLUSTER);
 
         //Tools
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_sword"), ELEMENTAL_SWORD);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_pickaxe"), ELEMENTAL_PICKAXE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_axe"), ELEMENTAL_AXE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elemental_shovel"), ELEMENTAL_SHOVEL);

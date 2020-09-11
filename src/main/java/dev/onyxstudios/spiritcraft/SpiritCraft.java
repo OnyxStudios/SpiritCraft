@@ -3,9 +3,11 @@ package dev.onyxstudios.spiritcraft;
 import dev.onyxstudios.spiritcraft.api.events.BlockBreakEvent;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalAxe;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
+import dev.onyxstudios.spiritcraft.items.tools.ElementalSword;
 import dev.onyxstudios.spiritcraft.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -31,5 +33,6 @@ public class SpiritCraft implements ModInitializer {
 
         PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> !ElementalAxe.breakLogs(world, pos, player));
         BlockBreakEvent.EVENT.register((world, player, state, pos, direction) -> ElementalShovel.shovelDirt(world, player, state, pos, direction));
+        AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> ElementalSword.damageAOE(world, player, hand, entity));
     }
 }
