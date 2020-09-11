@@ -40,7 +40,8 @@ public class BlockUtils {
                         PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
                         buffer.writeBlockPos(placePos);
                         buffer.writeInt(3);
-                        ((ServerPlayerEntity) player).networkHandler.sendPacket(new CustomPayloadS2CPacket(ModPackets.PACKET_SPAWN_STARS, buffer));
+                        buffer.writeInt(direction.getId());
+                        ((ServerPlayerEntity) player).networkHandler.sendPacket(new CustomPayloadS2CPacket(ModPackets.PACKET_SPAWN_FADE, buffer));
                     }
                 }
             }
@@ -62,7 +63,8 @@ public class BlockUtils {
                 PacketByteBuf buffer = new PacketByteBuf(Unpooled.buffer());
                 buffer.writeBlockPos(shovelPos);
                 buffer.writeInt(3);
-                ((ServerPlayerEntity) user).networkHandler.sendPacket(new CustomPayloadS2CPacket(ModPackets.PACKET_SPAWN_STARS, buffer));
+                buffer.writeInt(-1);
+                ((ServerPlayerEntity) user).networkHandler.sendPacket(new CustomPayloadS2CPacket(ModPackets.PACKET_SPAWN_FADE, buffer));
             }
         }
 

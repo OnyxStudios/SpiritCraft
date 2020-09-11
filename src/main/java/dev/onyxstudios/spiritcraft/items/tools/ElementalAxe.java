@@ -5,6 +5,7 @@ import dev.onyxstudios.spiritcraft.registry.ModItems;
 import dev.onyxstudios.spiritcraft.registry.ModRenders;
 import dev.onyxstudios.spiritcraft.utils.BlockUtils;
 import dev.onyxstudios.spiritcraft.utils.MathUtils;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -47,40 +48,44 @@ public class ElementalAxe extends AxeItem {
         if(!items.isEmpty()) {
             for (ItemEntity entity : items) {
                 if(!entity.isAlive()) continue;
-                double multiplier = 0.8;
-                double squaredDistance = entity.getPos().squaredDistanceTo(user.getPos().add(0, user.getHeight() / 2.0f, 0));
-                Vec3d distance = MathUtils.divide(entity.getPos().subtract(user.getPos()), squaredDistance);
-                entity.addVelocity(-distance.getX() * multiplier, -distance.getY() * multiplier, -distance.getZ() * multiplier);
-
-                if (entity.getVelocity().getX() > ITEM_VELOCITY) {
-                    entity.setVelocity(ITEM_VELOCITY, entity.getVelocity().getY(), entity.getVelocity().getZ());
-                }
-
-                if (entity.getVelocity().getX() < -ITEM_VELOCITY) {
-                    entity.setVelocity(-ITEM_VELOCITY, entity.getVelocity().getY(), entity.getVelocity().getZ());
-                }
-
-                if (entity.getVelocity().getY() > ITEM_VELOCITY) {
-                    entity.setVelocity(entity.getVelocity().getX(), ITEM_VELOCITY, entity.getVelocity().getZ());
-                }
-
-                if (entity.getVelocity().getY() < -ITEM_VELOCITY) {
-                    entity.setVelocity(entity.getVelocity().getX(), -0.25, entity.getVelocity().getZ());
-                }
-
-                if (entity.getVelocity().getZ() > ITEM_VELOCITY) {
-                    entity.setVelocity(entity.getVelocity().getX(), entity.getVelocity().getY(), ITEM_VELOCITY);
-                }
-
-                if (entity.getVelocity().getZ() < -ITEM_VELOCITY) {
-                    entity.setVelocity(entity.getVelocity().getX(), entity.getVelocity().getY(), -ITEM_VELOCITY);
-                }
+                moveTowardsPlayer(entity, user);
 
                 //Spawn Particles
                 if(world.isClient) {
                     world.addParticle(ModRenders.MAGIC_BUBBLE_TYPE, true, entity.getPos().getX(), entity.getPos().getY() + 0.5, entity.getPos().getZ(), 0, 0, 0);
                 }
             }
+        }
+    }
+
+    public static void moveTowardsPlayer(Entity entity, LivingEntity player) {
+        double multiplier = 0.8;
+        double squaredDistance = entity.getPos().squaredDistanceTo(player.getPos().add(0, player.getHeight() / 2.0f, 0));
+        Vec3d distance = MathUtils.divide(entity.getPos().subtract(player.getPos()), squaredDistance);
+        entity.addVelocity(-distance.getX() * multiplier, -distance.getY() * multiplier, -distance.getZ() * multiplier);
+
+        if (entity.getVelocity().getX() > ITEM_VELOCITY) {
+            entity.setVelocity(ITEM_VELOCITY, entity.getVelocity().getY(), entity.getVelocity().getZ());
+        }
+
+        if (entity.getVelocity().getX() < -ITEM_VELOCITY) {
+            entity.setVelocity(-ITEM_VELOCITY, entity.getVelocity().getY(), entity.getVelocity().getZ());
+        }
+
+        if (entity.getVelocity().getY() > ITEM_VELOCITY) {
+            entity.setVelocity(entity.getVelocity().getX(), ITEM_VELOCITY, entity.getVelocity().getZ());
+        }
+
+        if (entity.getVelocity().getY() < -ITEM_VELOCITY) {
+            entity.setVelocity(entity.getVelocity().getX(), -ITEM_VELOCITY, entity.getVelocity().getZ());
+        }
+
+        if (entity.getVelocity().getZ() > ITEM_VELOCITY) {
+            entity.setVelocity(entity.getVelocity().getX(), entity.getVelocity().getY(), ITEM_VELOCITY);
+        }
+
+        if (entity.getVelocity().getZ() < -ITEM_VELOCITY) {
+            entity.setVelocity(entity.getVelocity().getX(), entity.getVelocity().getY(), -ITEM_VELOCITY);
         }
     }
 

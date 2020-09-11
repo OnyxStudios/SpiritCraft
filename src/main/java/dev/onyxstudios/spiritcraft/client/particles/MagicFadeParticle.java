@@ -4,23 +4,11 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-public class MagicStarParticle extends SpriteBillboardParticle {
+public class MagicFadeParticle extends AscendingParticle {
 
-    public SpriteProvider spriteProvider;
-
-    public MagicStarParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
-        super(world, x, y, z, velocityX, velocityY, velocityZ);
-        this.setMaxAge(18);
-        this.scale(0.75f);
-        this.spriteProvider = spriteProvider;
-        this.setSpriteForAge(spriteProvider);
-    }
-
-    public void tick() {
-        if (this.age++ >= this.maxAge) {
-            this.markDead();
-        }
-        this.setSpriteForAge(this.spriteProvider);
+    public MagicFadeParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+        super(world, x, y, z, 0.2f, 0.2f, 0.2f, velocityX, velocityY, velocityZ, 1.2f, spriteProvider, 1, 6, 0.0006D, true);
+        this.setColor(27 / 255.0f, 227 / 255.0f, 64 / 255.0f);
     }
 
     @Override
@@ -36,7 +24,7 @@ public class MagicStarParticle extends SpriteBillboardParticle {
         }
 
         public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double x, double y, double z, double vx, double vy, double vz) {
-            return new MagicStarParticle(clientWorld, x, y, z, vx, vy, vz, this.spriteProvider);
+            return new MagicFadeParticle(clientWorld, x, y, z, vx, vy, vz, this.spriteProvider);
         }
     }
 }
