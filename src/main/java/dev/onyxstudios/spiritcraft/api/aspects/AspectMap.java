@@ -2,6 +2,7 @@ package dev.onyxstudios.spiritcraft.api.aspects;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -14,7 +15,7 @@ public class AspectMap {
 
     public static Map<Block, AspectStack[]> BLOCK_ASPECTS = new HashMap<>();
     public static Map<Item, AspectStack[]> ITEM_ASPECTS = new HashMap<>();
-    public static Map<Entity, AspectStack[]> ENTITY_ASPECTS = new HashMap<>();
+    public static Map<EntityType<?>, AspectStack[]> ENTITY_ASPECTS = new HashMap<>();
 
     static {
         //Map all Block/Item/Entity -> Aspects
@@ -28,7 +29,7 @@ public class AspectMap {
         ITEM_ASPECTS.put(item, aspects);
     }
 
-    public static void register(Entity entity, AspectStack... aspects) {
+    public static void register(EntityType<?> entity, AspectStack... aspects) {
         ENTITY_ASPECTS.put(entity, aspects);
     }
 
@@ -57,7 +58,7 @@ public class AspectMap {
             return ITEM_ASPECTS.getOrDefault(item, new AspectStack[]{});
         }
 
-        return ENTITY_ASPECTS.getOrDefault(entity, new AspectStack[]{});
+        return ENTITY_ASPECTS.getOrDefault(entity.getType(), new AspectStack[]{});
     }
 
     public static void register(Tag<?> tag, AspectStack... aspects) {
