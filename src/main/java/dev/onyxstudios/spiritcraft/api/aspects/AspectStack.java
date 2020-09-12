@@ -13,4 +13,12 @@ public class AspectStack {
         this.aspect = aspect;
         this.count = count;
     }
+
+    public Aspect getAspect() {
+        return aspect;
+    }
+
+    public int getCount() {
+        return count;
+    }
 }

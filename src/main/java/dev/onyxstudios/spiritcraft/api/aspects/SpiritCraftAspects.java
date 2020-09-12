@@ -77,7 +77,11 @@ public class SpiritCraftAspects {
     public static Aspect LINTEUM_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"linteum_aspect"), 0xe9e9c1, CREATURA_ASPECT, VASA_ASPECT);
     public static Aspect GLADIO_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"gladio_aspect"), 0xbe4e4e, VASA_ASPECT, SOLARIS_ASPECT);
     public static Aspect ARMATURA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"armatura_aspect"), 0x00bfbf, VASA_ASPECT, TELLUS_ASPECT);
-    
+
+    public static Aspect getAspect(Identifier id) {
+        return ASPECTS.get(id);
+    }
+
     /**
      * To be called internally in SpiritCraft to initialize all aspect textures
      * No mod besides Spiritcraft should call this method
