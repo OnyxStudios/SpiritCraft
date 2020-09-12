@@ -24,8 +24,22 @@ dependencies {
 	modImplementation "dev.onyxstudios:FOML:${project.foml_version}"
 	include "dev.onyxstudios:FOML:${project.foml_version}"
 
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cca_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:base:${project.cca_version}"
+
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:${project.cca_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-item:${project.cca_version}"
+
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:${project.cca_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-block:${project.cca_version}"
+
+	modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cca_version}"
+	include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cca_version}"
+
 	modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
 	include "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
+
+	modApi "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
 }
 
 processResources {
