@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tag.Tag;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,5 +58,14 @@ public class AspectMap {
         }
 
         return ENTITY_ASPECTS.getOrDefault(entity, new AspectStack[]{});
+    }
+
+    public static void register(Tag<?> tag, AspectStack... aspects) {
+        for (Object object : tag.values()) {
+            if(object instanceof Block)
+                register((Block) object, aspects);
+            else if(object instanceof Block)
+                register((Item) object, aspects);
+        }
     }
 }
