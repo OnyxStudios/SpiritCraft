@@ -13,6 +13,7 @@ import java.util.Map;
 public class SpiritCraftAspects {
 
     public static Map<Identifier, Aspect> ASPECTS = new HashMap<>();
+    public static final ModelIdentifier UNKNOWN_LOC = new ModelIdentifier(new Identifier(SpiritCraft.MODID, "aspects/unknown"), "inventory");
 
     //Prime Aspects
     public static Aspect AURA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "aura_aspect"), 0xc3af49);
@@ -85,7 +86,13 @@ public class SpiritCraftAspects {
     public static void registerResources() {
         ModelLoadingRegistry.INSTANCE.registerAppender((manager, consumer) -> {
             for (Identifier id : ASPECTS.keySet()) {
-                consumer.accept(new ModelIdentifier(new Identifier(id.getNamespace(), "aspects/" + id.getPath()), "inventory"));
+                ModelIdentifier modelId = new ModelIdentifier(new Identifier(id.getNamespace(), "aspects/" + id.getPath()), "inventory");
+                if(!manager.containsResource(modelId)) {
+                    consumer.accept(UNKNOWN_LOC);
+                    continue;
+                }
+
+                consumer.accept(modelId);
             }
         });
     }
