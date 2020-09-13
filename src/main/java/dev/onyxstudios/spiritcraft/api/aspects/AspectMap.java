@@ -90,6 +90,19 @@ public class AspectMap {
         register(EntityType.WITCH, new AspectStack(SpiritCraftAspects.VIR_ASPECT, 3), new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(EntityType.IRON_GOLEM, new AspectStack(SpiritCraftAspects.AES_ASPECT, 4), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT, 3));
 
+        //Entities
+        register(EntityType.MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT,3), new AspectStack(SpiritCraftAspects.AURA_ASPECT,2));
+        register(EntityType.ITEM_FRAME, new AspectStack(SpiritCraftAspects.VISUS_ASPECT,3), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT));
+        register(EntityType.FURNACE_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT,3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
+        register(EntityType.TNT_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT,3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
+        register(EntityType.PAINTING, new AspectStack(SpiritCraftAspects.VISUS_ASPECT,5), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT,3));
+        register(EntityType.CHEST_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT,3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
+        register(EntityType.EXPERIENCE_ORB,new AspectStack(SpiritCraftAspects.ANIMO_ASPECT, 5));
+        register(EntityType.HOPPER_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT,3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT));
+        register(EntityType.SPAWNER_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.MAGUS_ASPECT));
+        register(EntityType.END_CRYSTAL, new AspectStack(SpiritCraftAspects.NOVIS_ASPECT,3), new AspectStack(SpiritCraftAspects.REMEDIUM_ASPECT,3));
+
+
         //Tagged Blocks/Items
         register(BlockTags.BASE_STONE_OVERWORLD, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
         register(BlockTags.LOGS_THAT_BURN, new AspectStack(SpiritCraftAspects.SILVA_ASPECT, 4)); //Non Nether Logs
