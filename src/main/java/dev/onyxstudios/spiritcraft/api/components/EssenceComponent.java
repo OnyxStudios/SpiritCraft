@@ -57,4 +57,43 @@ public class EssenceComponent implements IEssenceComponent {
     public int getAmount() {
         return amount;
     }
+
+    @Override
+    public void setAspect(Aspect aspect) {
+        this.aspect = aspect;
+    }
+
+    @Override
+    public void setAmount(int amount) {
+        this.amount = amount;
+        if(this.amount > this.capacity) {
+            this.amount = this.capacity;
+        }
+    }
+
+    @Override
+    public int fillAspect(int amount) {
+        this.amount += amount;
+        if(this.amount > this.capacity) {
+            int overflow = this.amount - this.capacity;
+            this.amount = this.capacity;
+
+            return overflow;
+        }
+
+        return 0;
+    }
+
+    @Override
+    public int drainAspect(int amount) {
+        this.amount -= amount;
+        if(this.amount < 0) {
+            int overflow = -this.amount;
+            this.amount = 0;
+
+            return overflow;
+        }
+
+        return 0;
+    }
 }
