@@ -7,11 +7,15 @@ import dev.onyxstudios.spiritcraft.items.tools.base.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ModItems {
+
+    public static final Tag<Item> DYES = TagRegistry.item(new Identifier("c", "dyes"));
 
     public static Item SPIRIUM_INGOT = new BaseItem();
     public static Item NULL_INGOT = new BaseItem();
