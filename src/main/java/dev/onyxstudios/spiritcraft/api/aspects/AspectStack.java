@@ -26,11 +26,11 @@ public class AspectStack {
         this.count = count;
     }
 
-    public void grow() {
-        this.count++;
+    public void grow(int amount) {
+        this.count += amount;
     }
 
-    public void shrink() {
-        this.count--;
+    public void shrink(int amount) {
+        this.count -= amount;
     }
 }

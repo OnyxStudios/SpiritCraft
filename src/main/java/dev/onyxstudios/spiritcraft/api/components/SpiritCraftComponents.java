@@ -15,7 +15,8 @@ public class SpiritCraftComponents implements ItemComponentInitializer, BlockCom
 
     @Override
     public void registerBlockComponentFactories(BlockComponentFactoryRegistry registry) {
-        //TODO Filter BlockEntities for this component
+        //TODO Filter BlockEntities for components
         //registry.registerFor(new Identifier(""), EssenceComponent.ESSENCE, (state, world, pos, side) -> new EssenceComponent(10));
+        //registry.registerFor(new Identifier(""), SpiritComponent.SPIRIT, (state, world, pos, side) -> new SpiritComponent(LIST OF ASPECTS));
     }
 }
