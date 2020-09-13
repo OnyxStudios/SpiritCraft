@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.api.components;
+package dev.onyxstudios.spiritcraft.api.components.essence;
 
 import dev.onyxstudios.cca.api.v3.component.AutoSyncedComponent;
 import dev.onyxstudios.cca.api.v3.component.ComponentV3;
