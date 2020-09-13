@@ -21,4 +21,16 @@ public class AspectStack {
     public int getCount() {
         return count;
     }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void grow() {
+        this.count++;
+    }
+
+    public void shrink() {
+        this.count--;
+    }
 }

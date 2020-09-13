@@ -18,12 +18,19 @@
     ],
     "client": [
       "dev.onyxstudios.spiritcraft.SpiritCraftClient"
+    ],
+    "cardinal-components-item": [
+      "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
     ]
   },
   "mixins": [
     "spiritcraft.mixins.json"
   ],
-
+  "custom": {
+    "cardinal-components": [
+      "spiritcraft:spirit"
+    ]
+  },
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",

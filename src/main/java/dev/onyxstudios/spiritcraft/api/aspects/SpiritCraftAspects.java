@@ -82,6 +82,10 @@ public class SpiritCraftAspects {
         return ASPECTS.get(id);
     }
 
+    public static Aspect[] getPrimalAspects() {
+        return new Aspect[] {AURA_ASPECT, SOLARIS_ASPECT, TELLUS_ASPECT, HYDRA_ASPECT, ORDIN_ASPECT, VALE_ASPECT};
+    }
+
     /**
      * To be called internally in SpiritCraft to initialize all aspect textures
      * No mod besides Spiritcraft should call this method
