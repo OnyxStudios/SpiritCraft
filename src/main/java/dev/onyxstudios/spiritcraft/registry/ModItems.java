@@ -6,15 +6,19 @@ import dev.onyxstudios.spiritcraft.items.tools.*;
 import dev.onyxstudios.spiritcraft.items.tools.base.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 public class ModItems {
 
+    public static ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(SpiritCraft.MODID, "itemgroup"), () -> new ItemStack(ModBlocks.ELDERWOOD_LOG));
     public static final Tag<Item> DYES = TagRegistry.item(new Identifier("c", "dyes"));
 
     public static Item SPIRIUM_INGOT = new BaseItem();

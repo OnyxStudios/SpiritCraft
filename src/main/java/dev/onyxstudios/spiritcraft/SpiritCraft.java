@@ -6,12 +6,8 @@ import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalSword;
 import dev.onyxstudios.spiritcraft.registry.*;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,7 +15,6 @@ public class SpiritCraft implements ModInitializer {
 
     public static String MODID = "spiritcraft";
     public static Logger LOGGER = LogManager.getLogger("SpiritCraft");
-    public static ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(MODID, "itemgroup"), () -> new ItemStack(ModBlocks.ELDERWOOD_LOG));
 
     @Override
     public void onInitialize() {

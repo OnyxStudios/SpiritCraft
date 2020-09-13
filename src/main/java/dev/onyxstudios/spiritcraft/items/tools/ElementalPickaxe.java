@@ -1,8 +1,8 @@
 package dev.onyxstudios.spiritcraft.items.tools;
 
-import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.client.render.SCRenderLayers;
 import dev.onyxstudios.spiritcraft.registry.ModBlocks;
+import dev.onyxstudios.spiritcraft.registry.ModItems;
 import dev.onyxstudios.spiritcraft.registry.ModRenders;
 import dev.onyxstudios.spiritcraft.registry.ModSounds;
 import net.minecraft.client.MinecraftClient;
@@ -30,7 +30,7 @@ public class ElementalPickaxe extends PickaxeItem {
     public static final int MAX_RANGE = 16;
 
     public ElementalPickaxe() {
-        super(SCToolMaterials.ELEMENTAL, (int) SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(SpiritCraft.GROUP));
+        super(SCToolMaterials.ELEMENTAL, (int) SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(ModItems.GROUP));
     }
 
     @Override

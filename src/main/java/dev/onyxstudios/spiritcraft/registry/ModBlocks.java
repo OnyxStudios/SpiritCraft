@@ -115,7 +115,7 @@ public class ModBlocks {
 
     public static void registerBlock(Identifier identifier, Block block) {
         Registry.register(Registry.BLOCK, identifier, block);
-        Registry.register(Registry.ITEM, identifier, new BlockItem(block, new Item.Settings().group(SpiritCraft.GROUP)));
+        Registry.register(Registry.ITEM, identifier, new BlockItem(block, new Item.Settings().group(ModItems.GROUP)));
     }
 
     public static void registerBlock(Identifier identifier, Block block, BlockItem blockItem) {
