@@ -13,7 +13,7 @@ import java.util.Map;
 public class SpiritCraftAspects {
 
     public static Map<Identifier, Aspect> ASPECTS = new HashMap<>();
-    public static final ModelIdentifier UNKNOWN_LOC = new ModelIdentifier(new Identifier(SpiritCraft.MODID, "aspects/unknown"), "inventory");
+    public static final ModelIdentifier UNKNOWN_LOC = new ModelIdentifier(new Identifier(SpiritCraft.MODID, "aspect/unknown_aspect"), "");
 
     //Prime Aspects
     public static Aspect AURA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "aura_aspect"), 0xc3af49);
@@ -92,16 +92,21 @@ public class SpiritCraftAspects {
      */
     @Environment(EnvType.CLIENT)
     public static void registerResources() {
+        ModelLoadingRegistry.INSTANCE.registerVariantProvider(resourceManager -> (id, context) -> {
+            if(id.getPath().startsWith("aspect/")) {
+                return context.loadModel(new Identifier(id.getNamespace(), id.getPath()));
+            }
+
+            return null;
+        });
+
         ModelLoadingRegistry.INSTANCE.registerAppender((manager, consumer) -> {
             for (Identifier id : ASPECTS.keySet()) {
-                ModelIdentifier modelId = new ModelIdentifier(new Identifier(id.getNamespace(), "aspects/" + id.getPath()), "inventory");
-                if(!manager.containsResource(modelId)) {
-                    consumer.accept(UNKNOWN_LOC);
-                    continue;
-                }
-
+                ModelIdentifier modelId = new ModelIdentifier(new Identifier(id.getNamespace(), "aspect/" + id.getPath()), "");
                 consumer.accept(modelId);
             }
+
+            consumer.accept(UNKNOWN_LOC);
         });
     }
 }

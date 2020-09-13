@@ -24,6 +24,9 @@
     ],
     "cardinal-components-block": [
       "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
+    ],
+    "rei_plugins": [
+      "dev.onyxstudios.spiritcraft.api.rei.SpiritCraftPlugin"
     ]
   },
   "mixins": [
