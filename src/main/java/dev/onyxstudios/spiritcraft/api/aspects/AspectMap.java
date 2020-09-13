@@ -1,11 +1,14 @@
 package dev.onyxstudios.spiritcraft.api.aspects;
 
+import dev.onyxstudios.spiritcraft.registry.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.Tag;
 
 import java.util.HashMap;
@@ -86,6 +89,16 @@ public class AspectMap {
         register(EntityType.WITHER, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 20), new AspectStack(SpiritCraftAspects.VALE_ASPECT, 20), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 15));
         register(EntityType.WITCH, new AspectStack(SpiritCraftAspects.VIR_ASPECT, 3), new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(EntityType.IRON_GOLEM, new AspectStack(SpiritCraftAspects.AES_ASPECT, 4), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT, 3));
+
+        //Tagged Blocks/Items
+        register(BlockTags.BASE_STONE_OVERWORLD, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
+        register(BlockTags.LOGS_THAT_BURN, new AspectStack(SpiritCraftAspects.SILVA_ASPECT, 4)); //Non Nether Logs
+        register(BlockTags.PLANKS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
+        register(BlockTags.WOODEN_SLABS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
+        register(BlockTags.WOODEN_STAIRS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
+        register(ItemTags.SAPLINGS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT), new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT, 2));
+        register(ModItems.DYES, new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
+        register(BlockTags.LEAVES, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
     }
 
     public static void register(Block block, AspectStack... aspects) {
