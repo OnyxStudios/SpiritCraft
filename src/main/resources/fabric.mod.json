@@ -21,6 +21,9 @@
     ],
     "cardinal-components-item": [
       "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
+    ],
+    "cardinal-components-block": [
+      "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
     ]
   },
   "mixins": [
