@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "spiritcraft:aspects/unknown"
+    "layer0": "spiritcraft:aspects/creatura"
   }
 }

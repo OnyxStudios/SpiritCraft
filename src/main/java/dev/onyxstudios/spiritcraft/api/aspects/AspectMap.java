@@ -1,6 +1,5 @@
 package dev.onyxstudios.spiritcraft.api.aspects;
 
-import dev.onyxstudios.spiritcraft.SpiritCraft;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
