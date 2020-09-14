@@ -29,6 +29,9 @@ import java.util.Map;
 public class ModBlocks {
 
     public static final Tag<Block> ORES = TagRegistry.block(new Identifier("c", "ores"));
+    public static final Tag<Block> GLASS_PANES = TagRegistry.block(new Identifier("c", "glass_panes"));
+    public static final Tag<Block> GLAZED_TERRACOTTA = TagRegistry.block(new Identifier("c", "glazed_terracotta"));
+    public static final Tag<Block> SKULLS = TagRegistry.block(new Identifier("c", "skulls"));
     public static Map<Block, Block> CUSTOM_STRIPPED_WOOD = new HashMap<>();
 
     public static int GREATWOOD_LEAVES_COLOR = 0x1aad77;
