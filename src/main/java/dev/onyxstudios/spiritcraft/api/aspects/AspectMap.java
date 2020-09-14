@@ -2,12 +2,15 @@ package dev.onyxstudios.spiritcraft.api.aspects;
 
 import dev.onyxstudios.spiritcraft.registry.ModItems;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.Items;
 import net.minecraft.tag.BlockTags;
+import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.Tag;
 
 import java.util.HashMap;
@@ -110,6 +113,39 @@ public class AspectMap {
         register(BlockTags.SAPLINGS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT), new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT, 2));
         register(ModItems.DYES, new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
         register(BlockTags.LEAVES, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
+        register(Blocks.RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.SEMITA_ASPECT));
+        register(Blocks.POWERED_RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT));
+        register(Blocks.DETECTOR_RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
+        register(Blocks.ACTIVATOR_RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT, 2));
+        register(Items.MINECART, new AspectStack(SpiritCraftAspects.AES_ASPECT, 2), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Items.SADDLE, new AspectStack(SpiritCraftAspects.CREATURA_ASPECT, 2), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT, 3), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 3));
+        register(ItemTags.BOATS, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 4), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Items.CARROT_ON_A_STICK, new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Items.WARPED_FUNGUS_ON_A_STICK, new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Items.ELYTRA, new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 6), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT, 2));
+        register(Blocks.DISPENSER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
+        register(Blocks.NOTE_BLOCK, new AspectStack(SpiritCraftAspects.VISUS_ASPECT, 4), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT, 4));
+        register(Blocks.PISTON, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 2), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Blocks.STICKY_PISTON, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 2), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Blocks.LEVER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
+        register(BlockTags.PRESSURE_PLATES, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
+        register(Blocks.REDSTONE_TORCH, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 2));
+        register(BlockTags.FENCE_GATES, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.SEMITA_ASPECT));
+        register(Blocks.REDSTONE_LAMP, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.RADIANT_ASPECT));
+        register(Blocks.TRIPWIRE_HOOK, new AspectStack(SpiritCraftAspects.VISUS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.DECIPULA_ASPECT));
+        register(BlockTags.BUTTONS, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
+        register(Blocks.CHEST, new AspectStack(SpiritCraftAspects.INANIS_ASPECT, 4));
+        register(Blocks.DAYLIGHT_DETECTOR, new AspectStack(SpiritCraftAspects.VISUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.RADIANT_ASPECT, 3), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3));
+        register(Blocks.REDSTONE_BLOCK, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT, 3), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 2));
+        register(Blocks.HOPPER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT), new AspectStack(SpiritCraftAspects.ITUS_ASPECT));
+        register(Blocks.DROPPER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
+        register(Blocks.OBSERVER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
+        register(BlockTags.DOORS, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 2), new AspectStack(SpiritCraftAspects.ITUS_ASPECT));
+        register(Blocks.REPEATER, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.ITUS_ASPECT), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT));
+        register(Blocks.COMPARATOR, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.ITUS_ASPECT), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT));
+        register(Blocks.REDSTONE_WIRE, new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT, 2), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
+        register(Blocks.LECTERN, new AspectStack(SpiritCraftAspects.SILVA_ASPECT, 2), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
+        register(Blocks.TARGET, new AspectStack(SpiritCraftAspects.ITUS_ASPECT), new AspectStack(SpiritCraftAspects.VASA_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
     }
 
     public static void register(Block block, AspectStack... aspects) {
@@ -117,6 +153,11 @@ public class AspectMap {
     }
 
     public static void register(Item item, AspectStack... aspects) {
+        if(item instanceof BlockItem) {
+            BLOCK_ASPECTS.put(((BlockItem) item).getBlock(), aspects);
+            return;
+        }
+
         ITEM_ASPECTS.put(item, aspects);
     }
 
