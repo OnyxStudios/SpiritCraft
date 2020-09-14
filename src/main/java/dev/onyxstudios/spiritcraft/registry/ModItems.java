@@ -19,7 +19,7 @@ import net.minecraft.util.registry.Registry;
 public class ModItems {
 
     public static ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier(SpiritCraft.MODID, "itemgroup"), () -> new ItemStack(ModBlocks.ELDERWOOD_LOG));
-    public static final Tag<Item> DYES = TagRegistry.item(new Identifier("minecraft", "dyes"));
+    public static final Tag<Item> DYES = TagRegistry.item(new Identifier("c", "dyes"));
 
     public static Item SPIRIUM_INGOT = new BaseItem();
     public static Item NULL_INGOT = new BaseItem();
