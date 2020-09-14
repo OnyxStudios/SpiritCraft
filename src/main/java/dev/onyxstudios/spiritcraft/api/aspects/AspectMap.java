@@ -511,7 +511,7 @@ public class AspectMap {
         register(Blocks.QUARTZ_BLOCK, new AspectStack(SpiritCraftAspects.CRYSTALLO_ASPECT, 6));
         register(ModBlocks.TERRACOTTA, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT,2), new AspectStack(SpiritCraftAspects.ORDIN_ASPECT));
         register(Blocks.HAY_BLOCK, new AspectStack(SpiritCraftAspects.SEGES_ASPECT, 6));
-        register((Blocks.COAL_BLOCK, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 4), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT,4));
+        register(Blocks.COAL_BLOCK, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 4), new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT,4));
         register(Blocks.PRISMARINE, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT,2), new AspectStack(SpiritCraftAspects.CRYSTALLO_ASPECT,2));
         register(Blocks.SEA_LANTERN, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 2), new AspectStack(SpiritCraftAspects.RADIANT_ASPECT, 4));
         register(Blocks.RED_SANDSTONE, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT));
