@@ -146,6 +146,45 @@ public class AspectMap {
         register(Blocks.REDSTONE_WIRE, new AspectStack(SpiritCraftAspects.INDUSTRIA_ASPECT, 2), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
         register(Blocks.LECTERN, new AspectStack(SpiritCraftAspects.SILVA_ASPECT, 2), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
         register(Blocks.TARGET, new AspectStack(SpiritCraftAspects.ITUS_ASPECT), new AspectStack(SpiritCraftAspects.VASA_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
+
+        //Food
+        register(Items.APPLE, new AspectStack(SpiritCraftAspects.SEGES_ASPECT, 2), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
+        register(Items.MUSHROOM_STEW, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 4));
+        register(Items.BREAD, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 2));
+        register(Items.PORKCHOP, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
+        register(Items.COOKED_PORKCHOP, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 3));
+        register(Items.GOLDEN_APPLE, new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.REMEDIUM_ASPECT, 4));
+        register(Items.ENCHANTED_GOLDEN_APPLE, new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 4), new AspectStack(SpiritCraftAspects.REMEDIUM_ASPECT, 8));
+        register(Items.COD, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.SALMON, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.TROPICAL_FISH, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.PUFFERFISH, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.COOKED_COD, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.COOKED_SALMON, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Blocks.CAKE, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 4), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 4), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 4));
+        register(Items.COOKIE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
+        register(Items.MELON_SLICE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
+        register(Items.DRIED_KELP, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.BEEF, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
+        register(Items.COOKED_BEEF, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 4));
+        register(Items.CHICKEN, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
+        register(Items.COOKED_CHICKEN, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 3));
+        register(Items.ROTTEN_FLESH, new AspectStack(SpiritCraftAspects.VIR_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 2));
+        register(Items.SPIDER_EYE, new AspectStack(SpiritCraftAspects.VISUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT, 2), new AspectStack(SpiritCraftAspects.OSTIUM_ASPECT, 2));
+        register(Blocks.CARROTS, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
+        register(Blocks.POTATOES, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
+        register(Items.BAKED_POTATO, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 2));
+        register(Items.POISONOUS_POTATO, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.OSTIUM_ASPECT, 2));
+        register(Items.PUMPKIN_PIE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2));
+        register(Items.RABBIT, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 2), new AspectStack(SpiritCraftAspects.VITA_ASPECT), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
+        register(Items.COOKED_RABBIT, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 2), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT,2));
+        register(Items.RABBIT_STEW, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 2), new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT,4));
+        register(Items.MUTTON, new AspectStack(SpiritCraftAspects.CARNES_ASPECT,3), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
+        register(Items.COOKED_MUTTON, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT,3));
+        register(Items.BEETROOT, new AspectStack(SpiritCraftAspects.VISUS_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
+        register(Items.BEETROOT_SOUP, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 2));
+        register(Blocks.SWEET_BERRY_BUSH, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT));
+        register(Items.HONEY_BOTTLE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT,3), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.GELATA_ASPECT));
     }
 
     public static void register(Block block, AspectStack... aspects) {
