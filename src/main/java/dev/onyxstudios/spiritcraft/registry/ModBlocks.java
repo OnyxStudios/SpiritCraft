@@ -32,6 +32,10 @@ public class ModBlocks {
     public static final Tag<Block> GLASS_PANES = TagRegistry.block(new Identifier("c", "glass_panes"));
     public static final Tag<Block> GLAZED_TERRACOTTA = TagRegistry.block(new Identifier("c", "glazed_terracotta"));
     public static final Tag<Block> SKULLS = TagRegistry.block(new Identifier("c", "skulls"));
+    public static final Tag<Block> GLASS = TagRegistry.block(new Identifier("c", "glass"));
+    public static final Tag<Block> TERRACOTTA = TagRegistry.block(new Identifier("c", "terracotta"));
+    public static final Tag<Block> CONCRETE = TagRegistry.block(new Identifier("c", "concrete"));
+    public static final Tag<Block> CONCRETE_POWDER = TagRegistry.block(new Identifier("c", "concrete_powder"));
     public static Map<Block, Block> CUSTOM_STRIPPED_WOOD = new HashMap<>();
 
     public static int GREATWOOD_LEAVES_COLOR = 0x1aad77;
