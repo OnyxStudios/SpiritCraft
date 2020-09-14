@@ -17,11 +17,11 @@ public class SpiritCraftAspects {
 
     //Prime Aspects
     public static Aspect AURA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "aura_aspect"), 0xc3af49);
-    public static Aspect SOLARIS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "solaris_aspect"), 0xf4503a);
     public static Aspect HYDRA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "hydra_aspect"), 0x3accf4);
-    public static Aspect TELLUS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "tellus_aspect"), 0x07c700);
+    public static Aspect SOLARIS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "solaris_aspect"), 0xf4503a);
     public static Aspect ORDIN_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "ordin_aspect"), 0xfffafc);
     public static Aspect VALE_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "vale_aspect"), 0x242424);
+    public static Aspect TELLUS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "tellus_aspect"), 0x07c700);
 
     //TIER 1
     public static Aspect FRIGAS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"frigas_aspect"), 0xe1ffff, SOLARIS_ASPECT, VALE_ASPECT);
@@ -53,6 +53,7 @@ public class SpiritCraftAspects {
     public static Aspect NOVIS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"novis_aspect"), 0x7c4d7c, UMBRA_ASPECT, INANIS_ASPECT);
     public static Aspect SILVA_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"silva_aspect"), 0x866430, AURA_ASPECT, FOLIUM_ASPECT);
     public static Aspect SPHAERAM_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"sphaeram_aspect"), 0xbe8ebe, AURA_ASPECT, MAGUS_ASPECT);
+    public static Aspect CARNES_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID, "carnes_aspect"), 0xee478d, CREATURA_ASPECT, MORS_ASPECT);
     public static Aspect IMMORTUOS_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"immortuos_aspect"), 0x3a4000, MORS_ASPECT, ITUS_ASPECT);
     public static Aspect SOL_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"sol_aspect"), 0x3e3e41, MORS_ASPECT, VITA_ASPECT);
     public static Aspect CORRUPTIO_ASPECT = new Aspect(new Identifier(SpiritCraft.MODID,"corruptio_aspect"), 0x7f007f, VALE_ASPECT, MAGUS_ASPECT);
