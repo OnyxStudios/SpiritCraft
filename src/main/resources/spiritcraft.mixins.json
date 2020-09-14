@@ -14,7 +14,8 @@
     "ServerPlayerInteractionManagerMixin"
   ],
   "client": [
-    "WorldRendererMixin"
+    "WorldRendererMixin",
+    "ScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

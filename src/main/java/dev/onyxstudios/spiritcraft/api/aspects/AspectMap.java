@@ -8,7 +8,6 @@ import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.ItemTags;
 import net.minecraft.tag.Tag;
 
 import java.util.HashMap;
@@ -108,7 +107,7 @@ public class AspectMap {
         register(BlockTags.PLANKS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
         register(BlockTags.WOODEN_SLABS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
         register(BlockTags.WOODEN_STAIRS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
-        register(ItemTags.SAPLINGS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT), new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT, 2));
+        register(BlockTags.SAPLINGS, new AspectStack(SpiritCraftAspects.SILVA_ASPECT), new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT, 2));
         register(ModItems.DYES, new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
         register(BlockTags.LEAVES, new AspectStack(SpiritCraftAspects.SILVA_ASPECT));
     }
@@ -157,7 +156,7 @@ public class AspectMap {
         for (Object object : tag.values()) {
             if(object instanceof Block)
                 register((Block) object, aspects);
-            else if(object instanceof Block)
+            else if(object instanceof Item)
                 register((Item) object, aspects);
         }
     }
