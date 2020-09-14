@@ -294,7 +294,7 @@ public class AspectMap {
         register(Items.SALMON_BUCKET, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
         register(Items.COD_BUCKET, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
         register(Items.TROPICAL_FISH, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
-        register(Items.BRICKS, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
+        register(Items.BRICK, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(Items.CLAY_BALL, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
         register(Items.PAPER, new AspectStack(SpiritCraftAspects.FOLIUM_ASPECT), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
         register(Items.BOOK, new AspectStack(SpiritCraftAspects.ANIMO_ASPECT, 3));
@@ -397,12 +397,15 @@ public class AspectMap {
         register(BlockTags.BANNERS, new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT, 2), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
         register(Items.END_CRYSTAL, new AspectStack(SpiritCraftAspects.NOVIS_ASPECT, 2), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
         register(Blocks.LOOM, new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
+        register(Blocks.FLETCHING_TABLE, new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
+        register(Blocks.CARTOGRAPHY_TABLE, new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
         register(Blocks.COMPOSTER, new AspectStack(SpiritCraftAspects.ORDIN_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
         register(Blocks.BARREL, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT));
         register(Blocks.SMOKER, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(Blocks.BLAST_FURNACE, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(Blocks.SMITHING_TABLE, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT));
         register(Blocks.STONECUTTER, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT));
+        register(Blocks.GRINDSTONE, new AspectStack(SpiritCraftAspects.INANIS_ASPECT), new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT));
         register(Blocks.BELL, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.ITUS_ASPECT));
         register(Blocks.LANTERN, new AspectStack(SpiritCraftAspects.RADIANT_ASPECT, 2));
         register(Blocks.SEA_LANTERN, new AspectStack(SpiritCraftAspects.RADIANT_ASPECT, 2));
@@ -421,6 +424,8 @@ public class AspectMap {
         register(ModBlocks.GLAZED_TERRACOTTA, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.ORDIN_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
         register(ModBlocks.SKULLS, new AspectStack(SpiritCraftAspects.VALE_ASPECT), new AspectStack(SpiritCraftAspects.MORS_ASPECT), new AspectStack(SpiritCraftAspects.UMBRA_ASPECT), new AspectStack(SpiritCraftAspects.NOVIS_ASPECT), new AspectStack(SpiritCraftAspects.ANIMO_ASPECT));
         register(Items.POTION, new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 2));
+        register(Items.SPLASH_POTION, new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 2));
+        register(Items.LINGERING_POTION, new AspectStack(SpiritCraftAspects.MAGUS_ASPECT, 2), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 2));
         register(Items.GHAST_TEAR, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT), new AspectStack(SpiritCraftAspects.NOVIS_ASPECT));
         register(Items.FERMENTED_SPIDER_EYE, new AspectStack(SpiritCraftAspects.CREATURA_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT));
         register(Items.BLAZE_POWDER, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 2));
