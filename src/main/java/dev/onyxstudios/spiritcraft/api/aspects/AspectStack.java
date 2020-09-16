@@ -32,5 +32,7 @@ public class AspectStack {
 
     public void shrink(int amount) {
         this.count -= amount;
+        if(count < 0)
+            count = 0;
     }
 }
