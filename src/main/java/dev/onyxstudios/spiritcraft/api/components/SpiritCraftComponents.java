@@ -7,7 +7,7 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
-import net.minecraft.nbt.CompoundTag;
+import nerdhub.cardinal.components.api.util.RespawnCopyStrategy;
 
 public class SpiritCraftComponents implements ItemComponentInitializer, BlockComponentInitializer, EntityComponentInitializer {
 
@@ -26,10 +26,6 @@ public class SpiritCraftComponents implements ItemComponentInitializer, BlockCom
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {
-        registry.registerForPlayers(ResearchComponent.RESEARCH, player -> new ResearchComponent(), (from, to, lossless, keepInventory) -> {
-            CompoundTag tag = new CompoundTag();
-            from.writeToNbt(tag);
-            to.readFromNbt(tag);
-        });
+        registry.registerForPlayers(ResearchComponent.RESEARCH, player -> new ResearchComponent(), RespawnCopyStrategy.ALWAYS_COPY);
     }
 }

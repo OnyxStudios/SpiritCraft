@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.client;
 
 import dev.onyxstudios.spiritcraft.api.aspects.AspectMap;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectRenderHelper;

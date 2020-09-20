@@ -122,6 +122,6 @@ public class AspectEntryStack extends DrawableHelper implements EntryStack {
         if(bounds.contains(mouseX, mouseY))
             AspectRenderHelper.renderAspectTooltip(matrix, aspect, mouseX, mouseY);
 
-        AspectRenderHelper.renderGuiAspectModel(matrix, aspect, bounds.getX(), bounds.getY());
+        AspectRenderHelper.renderGuiAspectModel(matrix, aspect, bounds.getX(), bounds.getY(), 16);
     }
 }

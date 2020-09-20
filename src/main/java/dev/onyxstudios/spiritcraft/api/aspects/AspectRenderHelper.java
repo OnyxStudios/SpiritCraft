@@ -197,7 +197,7 @@ public class AspectRenderHelper {
         bufferBuilder.vertex(matrix, (float)xEnd, (float)yEnd, (float)z).color(k, l, m, j).next();
     }
 
-    public static void renderGuiAspectModel(MatrixStack stack, Aspect aspect, int x, int y) {
+    public static void renderGuiAspectModel(MatrixStack stack, Aspect aspect, int x, int y, float scale) {
         RenderSystem.pushMatrix();
         MinecraftClient.getInstance().getTextureManager().bindTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEX);
         MinecraftClient.getInstance().getTextureManager().getTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEX).setFilter(false, false);
@@ -210,7 +210,7 @@ public class AspectRenderHelper {
         RenderSystem.translatef(x, y, 100.0F);
         RenderSystem.translatef(8.0F, 8.0F, 0.0F);
         RenderSystem.scalef(1.0F, -1.0F, 1.0F);
-        RenderSystem.scalef(16.0F, 16.0F, 16.0F);
+        RenderSystem.scalef(scale, scale, scale);
         VertexConsumerProvider.Immediate immediate = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
 
         BakedModel itemModel = MinecraftClient.getInstance().getItemRenderer().getModels().getModelManager().getModel(new ModelIdentifier(new Identifier(aspect.getId().getNamespace(), "aspect/" + aspect.getId().getPath()), ""));

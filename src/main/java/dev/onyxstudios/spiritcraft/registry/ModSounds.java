@@ -8,8 +8,10 @@ import net.minecraft.util.registry.Registry;
 public class ModSounds {
 
     public static SoundEvent ELEMENTAL_PICKAXE_SCAN = new SoundEvent(new Identifier(SpiritCraft.MODID, "elemental_pickaxe_scan"));
+    public static SoundEvent ASPECT_SCAN = new SoundEvent(new Identifier(SpiritCraft.MODID, "scan"));
 
     public static void register() {
         Registry.register(Registry.SOUND_EVENT, ELEMENTAL_PICKAXE_SCAN.getId(), ELEMENTAL_PICKAXE_SCAN);
+        Registry.register(Registry.SOUND_EVENT, ASPECT_SCAN.getId(), ASPECT_SCAN);
     }
 }

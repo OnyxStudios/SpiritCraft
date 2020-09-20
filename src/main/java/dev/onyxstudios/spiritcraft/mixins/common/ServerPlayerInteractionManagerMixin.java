@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import dev.onyxstudios.spiritcraft.api.events.BlockBreakEvent;
 import net.minecraft.block.BlockState;

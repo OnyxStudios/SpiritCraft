@@ -1,11 +1,16 @@
 package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.api.components.research.IResearchComponent;
+import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
+import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.Identifier;
@@ -19,6 +24,8 @@ public class ModPackets {
     public static Identifier PACKET_SPAWN_BUBBLE = new Identifier(SpiritCraft.MODID, "packet_spawn_bubble");
     public static Identifier PACKET_SPAWN_FADE = new Identifier(SpiritCraft.MODID, "packet_spawn_fade");
     public static Identifier PACKET_ROTATE_SHOVEL = new Identifier(SpiritCraft.MODID, "packet_rotate_shovel");
+    public static Identifier PACKET_SCAN_BLOCK = new Identifier(SpiritCraft.MODID, "scan_block");
+    public static Identifier PACKET_SCAN_ENTITY = new Identifier(SpiritCraft.MODID, "scan_entity");
 
     public static void registerServer() {
         ServerSidePacketRegistry.INSTANCE.register(PACKET_ROTATE_SHOVEL,  (context, buf) -> {
@@ -31,6 +38,28 @@ public class ModPackets {
                 }else {
                     tag.putString(ElementalShovel.ROTATION, ElementalShovel.ROTATION_WALL);
                 }
+            }
+        });
+
+        ServerSidePacketRegistry.INSTANCE.register(PACKET_SCAN_BLOCK, (context, buf) -> {
+            PlayerEntity player = context.getPlayer();
+
+            if(player != null) {
+                IResearchComponent component = ResearchComponent.RESEARCH.get(player);
+                BlockState state = player.world.getBlockState(buf.readBlockPos());
+                component.scanObject(state.getBlock());
+                ResearchComponent.RESEARCH.sync(player);
+            }
+        });
+
+        ServerSidePacketRegistry.INSTANCE.register(PACKET_SCAN_ENTITY, (context, buf) -> {
+            PlayerEntity player = context.getPlayer();
+
+            if(player != null) {
+                IResearchComponent component = ResearchComponent.RESEARCH.get(player);
+                Entity entity = player.world.getEntityById(buf.readInt());
+                component.scanObject(entity);
+                ResearchComponent.RESEARCH.sync(player);
             }
         });
     }

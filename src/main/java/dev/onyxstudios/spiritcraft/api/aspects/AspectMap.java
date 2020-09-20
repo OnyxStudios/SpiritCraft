@@ -25,7 +25,7 @@ public class AspectMap {
 
     static {
         //Entity Mobs (To Do: Add Charged Creeper)
-        register(EntityType.SKELETON, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 4), new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 3), new AspectStack(SpiritCraftAspects.VIR_ASPECT), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
+        register(EntityType.SKELETON, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 3), new AspectStack(SpiritCraftAspects.VIR_ASPECT), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
         register(EntityType.WITHER_SKELETON, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 4), new AspectStack(SpiritCraftAspects.VIR_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 2));
         register(EntityType.GIANT, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 4), new AspectStack(SpiritCraftAspects.VIR_ASPECT, 3), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT, 3));
         register(EntityType.ZOMBIE, new AspectStack(SpiritCraftAspects.IMMORTUOS_ASPECT, 2), new AspectStack(SpiritCraftAspects.VIR_ASPECT), new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
@@ -344,6 +344,7 @@ public class AspectMap {
 
         register(Blocks.COBWEB, new AspectStack(SpiritCraftAspects.DECIPULA_ASPECT, 2), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT));
         register(Blocks.TALL_GRASS, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT));
+        register(Blocks.GRASS, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT));
         register(Blocks.FERN, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT));
         register(Blocks.DEAD_BUSH, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT));
         register(Blocks.SEAGRASS, new AspectStack(SpiritCraftAspects.SEGES_ASPECT), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
@@ -540,6 +541,8 @@ public class AspectMap {
         register(Blocks.CRACKED_POLISHED_BLACKSTONE_BRICKS, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.UMBRA_ASPECT), new AspectStack(SpiritCraftAspects.VALE_ASPECT));
         register(Blocks.CHISELED_POLISHED_BLACKSTONE, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.UMBRA_ASPECT), new AspectStack(SpiritCraftAspects.ORDIN_ASPECT));
         register(Blocks.POLISHED_BLACKSTONE_BRICKS, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT), new AspectStack(SpiritCraftAspects.UMBRA_ASPECT), new AspectStack(SpiritCraftAspects.CREO_ASPECT));
+        register(Blocks.WATER, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 4));
+        register(Blocks.LAVA, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 4));
     }
 
     public static void register(Block block, AspectStack... aspects) {
@@ -575,13 +578,7 @@ public class AspectMap {
     public static AspectStack[] getAspects(Entity entity) {
         //Check if ItemEntity and return aspects for item
         if(entity instanceof ItemEntity) {
-            Item item = ((ItemEntity) entity).getStack().getItem();
-            //Check if item is actually a Block and return block aspects
-            if(item instanceof BlockItem) {
-                return BLOCK_ASPECTS.getOrDefault(((BlockItem) item).getBlock(), new AspectStack[]{});
-            }
-
-            return ITEM_ASPECTS.getOrDefault(item, new AspectStack[]{});
+            return getAspects(((ItemEntity) entity).getStack().getItem());
         }
 
         return ENTITY_ASPECTS.getOrDefault(entity.getType(), new AspectStack[]{});

@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;

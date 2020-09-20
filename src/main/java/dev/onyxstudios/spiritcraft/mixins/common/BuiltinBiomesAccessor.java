@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.util.registry.RegistryKey;

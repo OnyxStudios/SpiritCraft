@@ -1,7 +1,6 @@
 package dev.onyxstudios.spiritcraft.api.components.research;
 
 import dev.onyxstudios.cca.api.v3.component.AutoSyncedComponent;
-import dev.onyxstudios.cca.api.v3.component.ComponentV3;
 import dev.onyxstudios.spiritcraft.api.aspects.Aspect;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import net.minecraft.block.Block;
@@ -12,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.List;
 
-public interface IResearchComponent extends ComponentV3, AutoSyncedComponent {
+public interface IResearchComponent extends AutoSyncedComponent {
 
     /**
      * Check if the player has unlocked an Aspect

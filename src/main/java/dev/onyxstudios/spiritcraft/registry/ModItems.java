@@ -2,6 +2,7 @@ package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.items.BaseItem;
+import dev.onyxstudios.spiritcraft.items.ScannerItem;
 import dev.onyxstudios.spiritcraft.items.tools.*;
 import dev.onyxstudios.spiritcraft.items.tools.base.*;
 import net.fabricmc.api.EnvType;
@@ -25,6 +26,7 @@ public class ModItems {
     public static Item NULL_INGOT = new BaseItem();
     public static Item IRON_ORE_CLUSTER = new BaseItem();
     public static Item GOLD_ORE_CLUSTER = new BaseItem();
+    public static Item SCANNER = new ScannerItem();
 
     //Tools
     public static Item ELEMENTAL_SWORD = new ElementalSword();
@@ -81,6 +83,7 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_hoe"), NULL_HOE);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_shovel"), NULL_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_sword"), NULL_SWORD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "scanner"), SCANNER);
     }
 
     @Environment(EnvType.CLIENT)

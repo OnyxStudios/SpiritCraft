@@ -4,18 +4,21 @@
   "package": "dev.onyxstudios.spiritcraft.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BuiltinBiomesAccessor",
-    "VanillaLayeredBiomeSourceAccessor",
-    "SetBaseBiomesLayerAccessor",
-    "DefaultBiomeFeaturesMixin",
-    "BlockMixin",
-    "CookingRecipeSerializerMixin",
-    "AxeItemMixin",
-    "ServerPlayerInteractionManagerMixin"
+    "common.BuiltinBiomesAccessor",
+    "common.VanillaLayeredBiomeSourceAccessor",
+    "common.SetBaseBiomesLayerAccessor",
+    "common.DefaultBiomeFeaturesMixin",
+    "common.BlockMixin",
+    "common.CookingRecipeSerializerMixin",
+    "common.AxeItemMixin",
+    "common.ServerPlayerInteractionManagerMixin"
   ],
   "client": [
-    "WorldRendererMixin",
-    "ScreenMixin"
+    "client.WorldRendererMixin",
+    "client.ScreenMixin",
+    "client.HeldItemRendererMixin",
+    "client.InGameHudMixin",
+    "client.ClientPlayerInteractionManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

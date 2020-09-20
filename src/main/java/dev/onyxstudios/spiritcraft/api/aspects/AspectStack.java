@@ -35,4 +35,8 @@ public class AspectStack {
         if(count < 0)
             count = 0;
     }
+
+    public AspectStack copy() {
+        return new AspectStack(aspect, count);
+    }
 }

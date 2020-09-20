@@ -4,6 +4,7 @@ import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.api.aspects.Aspect;
+import dev.onyxstudios.spiritcraft.api.aspects.AspectMap;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import dev.onyxstudios.spiritcraft.api.aspects.SpiritCraftAspects;
 import net.fabricmc.fabric.api.util.NbtType;
@@ -15,7 +16,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ResearchComponent implements IResearchComponent {
 
-    public static final ComponentKey<ResearchComponent> RESEARCH = ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(SpiritCraft.MODID, "research"), ResearchComponent.class);
+    public static final ComponentKey<IResearchComponent> RESEARCH = ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(SpiritCraft.MODID, "research"), IResearchComponent.class);
 
     protected List<Identifier> unlockedAspects = new ArrayList<>();
     protected List<AspectStack> playerAspects = new ArrayList<>();
@@ -36,12 +36,12 @@ public class ResearchComponent implements IResearchComponent {
 
     @Override
     public boolean isAspectUnlocked(Aspect aspect) {
-        for (Identifier identifier : unlockedAspects) {
-            if(aspect.getId().equals(identifier))
+        for (Aspect primal : SpiritCraftAspects.getPrimalAspects()) {
+            if(primal.getId().equals(aspect.getId()))
                 return true;
         }
 
-        return false;
+        return unlockedAspects.contains(aspect.getId());
     }
 
     @Override
@@ -72,40 +72,28 @@ public class ResearchComponent implements IResearchComponent {
                 }
             }
         }else {
-            playerAspects.add(stack);
+            playerAspects.add(stack.copy());
         }
     }
 
     @Override
     public boolean isScanned(Block block) {
-        for (Block scannedBlock : scannedBlocks) {
-            if(block.is(scannedBlock))
-                return true;
-        }
-
-        return false;
+        return scannedBlocks.contains(block);
     }
 
     @Override
     public boolean isScanned(Item item) {
-        for (Item scannedItem : scannedItems) {
-            if(item == scannedItem)
-                return true;
-        }
-
         if(item instanceof BlockItem) {
             return isScanned(((BlockItem) item).getBlock());
         }
 
-        return false;
+        return scannedItems.contains(item);
     }
 
     @Override
     public boolean isScanned(Entity entity) {
-        for (EntityType<?> scannedEntity : scannedEntities) {
-            if(entity.getType() == scannedEntity)
-                return true;
-        }
+        if(scannedEntities.contains(entity.getType()))
+            return true;
 
         if(entity instanceof ItemEntity) {
             return isScanned(((ItemEntity) entity).getStack().getItem());
@@ -116,24 +104,45 @@ public class ResearchComponent implements IResearchComponent {
 
     @Override
     public void scanObject(Block block) {
-        if(!scannedBlocks.contains(block))
+        if(!scannedBlocks.contains(block)) {
             scannedBlocks.add(block);
+            for (AspectStack stack : AspectMap.getAspects(block)) {
+                addAspect(stack.copy());
+
+                if(!unlockedAspects.contains(stack.getAspect().getId()))
+                    unlockedAspects.add(stack.getAspect().getId());
+            }
+        }
     }
 
     @Override
     public void scanObject(Item item) {
         if(item instanceof BlockItem) {
-            scannedBlocks.add(((BlockItem) item).getBlock());
-        }else {
-            if(!scannedItems.contains(item))
-                scannedItems.add(item);
+            scanObject(((BlockItem) item).getBlock());
+        }else if(!scannedItems.contains(item)) {
+            scannedItems.add(item);
+            for (AspectStack stack : AspectMap.getAspects(item)) {
+                addAspect(stack.copy());
+
+                if(!unlockedAspects.contains(stack.getAspect().getId()))
+                    unlockedAspects.add(stack.getAspect().getId());
+            }
         }
     }
 
     @Override
     public void scanObject(Entity entity) {
-        if(!scannedEntities.contains(entity.getType()))
+        if(entity instanceof ItemEntity) {
+            scanObject(((ItemEntity) entity).getStack().getItem());
+        }else if(!scannedEntities.contains(entity.getType())) {
             scannedEntities.add(entity.getType());
+            for (AspectStack stack : AspectMap.getAspects(entity)) {
+                addAspect(stack.copy());
+
+                if(!unlockedAspects.contains(stack.getAspect().getId()))
+                    unlockedAspects.add(stack.getAspect().getId());
+            }
+        }
     }
 
     @Override
@@ -165,7 +174,7 @@ public class ResearchComponent implements IResearchComponent {
     public void readFromNbt(CompoundTag compoundTag) {
         ListTag unlockedAspectsTag = compoundTag.getList("unlockedAspects", NbtType.COMPOUND);
         for (Tag tag : unlockedAspectsTag) {
-            unlockedAspects.add(new Identifier(tag.asString()));
+            unlockedAspects.add(new Identifier(((CompoundTag) tag).getString("id")));
         }
 
         ListTag playerAspectsTag = compoundTag.getList("playerAspects", NbtType.COMPOUND);
@@ -179,17 +188,17 @@ public class ResearchComponent implements IResearchComponent {
 
         ListTag scannedBlocksTag = compoundTag.getList("scannedBlocks", NbtType.COMPOUND);
         for (Tag tag : scannedBlocksTag) {
-            scannedBlocks.add(Registry.BLOCK.get(new Identifier(tag.asString())));
+            scannedBlocks.add(Registry.BLOCK.get(new Identifier(((CompoundTag) tag).getString("id"))));
         }
 
         ListTag scannedItemsTag = compoundTag.getList("scannedItems", NbtType.COMPOUND);
         for (Tag tag : scannedItemsTag) {
-            scannedItems.add(Registry.ITEM.get(new Identifier(tag.asString())));
+            scannedItems.add(Registry.ITEM.get(new Identifier(((CompoundTag) tag).getString("id"))));
         }
 
         ListTag scannedEntitiesTag = compoundTag.getList("scannedEntities", NbtType.COMPOUND);
         for (Tag tag : scannedEntitiesTag) {
-            scannedEntities.add(Registry.ENTITY_TYPE.get(new Identifier(tag.asString())));
+            scannedEntities.add(Registry.ENTITY_TYPE.get(new Identifier(((CompoundTag) tag).getString("id"))));
         }
     }
 
@@ -197,7 +206,9 @@ public class ResearchComponent implements IResearchComponent {
     public void writeToNbt(CompoundTag compoundTag) {
         ListTag unlockedAspectsTag = new ListTag();
         for (Identifier id : unlockedAspects) {
-            unlockedAspectsTag.add(StringTag.of(id.toString()));
+            CompoundTag tag = new CompoundTag();
+            tag.putString("id", id.toString());
+            unlockedAspectsTag.add(tag);
         }
 
         ListTag playerAspectsTag = new ListTag();
@@ -210,17 +221,23 @@ public class ResearchComponent implements IResearchComponent {
 
         ListTag scannedBlocksTag = new ListTag();
         for (Block block : scannedBlocks) {
-            scannedBlocksTag.add(StringTag.of(Registry.BLOCK.getId(block).toString()));
+            CompoundTag tag = new CompoundTag();
+            tag.putString("id", Registry.BLOCK.getId(block).toString());
+            scannedBlocksTag.add(tag);
         }
 
         ListTag scannedItemsTag = new ListTag();
         for (Item item : scannedItems) {
-            scannedItemsTag.add(StringTag.of(Registry.ITEM.getId(item).toString()));
+            CompoundTag tag = new CompoundTag();
+            tag.putString("id", Registry.ITEM.getId(item).toString());
+            scannedItemsTag.add(tag);
         }
 
         ListTag scannedEntitiesTag = new ListTag();
         for (EntityType<?> type : scannedEntities) {
-            scannedEntitiesTag.add(StringTag.of(Registry.ENTITY_TYPE.getId(type).toString()));
+            CompoundTag tag = new CompoundTag();
+            tag.putString("id", Registry.ENTITY_TYPE.getId(type).toString());
+            scannedEntitiesTag.add(tag);
         }
 
         compoundTag.put("unlockedAspects", unlockedAspectsTag);

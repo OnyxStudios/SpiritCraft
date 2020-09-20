@@ -6,6 +6,10 @@ import net.minecraft.item.Item;
 public class BaseItem extends Item {
 
     public BaseItem() {
-        super(new Item.Settings().group(ModItems.GROUP));
+        this(new Item.Settings().group(ModItems.GROUP));
+    }
+
+    public BaseItem(Item.Settings settings) {
+        super(settings);
     }
 }

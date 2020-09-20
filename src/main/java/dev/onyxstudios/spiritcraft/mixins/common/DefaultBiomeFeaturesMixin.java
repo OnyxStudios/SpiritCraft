@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import dev.onyxstudios.spiritcraft.registry.ModBiomes;
 import net.minecraft.world.biome.GenerationSettings;

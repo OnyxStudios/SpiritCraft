@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import net.minecraft.world.biome.layer.SetBaseBiomesLayer;
 import org.spongepowered.asm.mixin.Mixin;

@@ -25,6 +25,9 @@
     "cardinal-components-block": [
       "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
     ],
+    "cardinal-components-entity": [
+      "dev.onyxstudios.spiritcraft.api.components.SpiritCraftComponents"
+    ],
     "rei_plugins": [
       "dev.onyxstudios.spiritcraft.api.rei.SpiritCraftPlugin"
     ]
@@ -34,7 +37,9 @@
   ],
   "custom": {
     "cardinal-components": [
-      "spiritcraft:spirit"
+      "spiritcraft:spirit",
+      "spiritcraft:essence",
+      "spiritcraft:research"
     ]
   },
   "depends": {

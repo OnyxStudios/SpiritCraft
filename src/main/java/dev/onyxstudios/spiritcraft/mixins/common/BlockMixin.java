@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.mixins;
+package dev.onyxstudios.spiritcraft.mixins.common;
 
 import dev.onyxstudios.spiritcraft.registry.ModRecipes;
 import dev.onyxstudios.spiritcraft.utils.BasicInvWrapper;
