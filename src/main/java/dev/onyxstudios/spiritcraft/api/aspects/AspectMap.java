@@ -104,6 +104,7 @@ public class AspectMap {
         register(EntityType.HOPPER_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT));
         register(EntityType.SPAWNER_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.MAGUS_ASPECT));
         register(EntityType.END_CRYSTAL, new AspectStack(SpiritCraftAspects.NOVIS_ASPECT, 3), new AspectStack(SpiritCraftAspects.REMEDIUM_ASPECT, 3));
+        register(EntityType.BOAT, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 4), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
 
         //Tagged Blocks/Items
         register(BlockTags.BASE_STONE_OVERWORLD, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT));
@@ -121,6 +122,10 @@ public class AspectMap {
         register(Blocks.DETECTOR_RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT), new AspectStack(SpiritCraftAspects.VISUS_ASPECT));
         register(Blocks.ACTIVATOR_RAIL, new AspectStack(SpiritCraftAspects.AES_ASPECT, 2));
         register(Items.MINECART, new AspectStack(SpiritCraftAspects.AES_ASPECT, 2), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
+        register(Items.FURNACE_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
+        register(Items.TNT_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT));
+        register(Items.CHEST_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.INANIS_ASPECT));
+        register(Items.HOPPER_MINECART, new AspectStack(SpiritCraftAspects.OBFICINA_ASPECT, 3), new AspectStack(SpiritCraftAspects.AURA_ASPECT), new AspectStack(SpiritCraftAspects.STATERA_ASPECT));
         register(Items.SADDLE, new AspectStack(SpiritCraftAspects.CREATURA_ASPECT, 2), new AspectStack(SpiritCraftAspects.LINTEUM_ASPECT, 3), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 3));
         register(ItemTags.BOATS, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 4), new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
         register(Items.CARROT_ON_A_STICK, new AspectStack(SpiritCraftAspects.ITUS_ASPECT, 4));
@@ -168,6 +173,7 @@ public class AspectMap {
         register(Items.COOKIE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
         register(Items.MELON_SLICE, new AspectStack(SpiritCraftAspects.ESURIES_ASPECT));
         register(Items.DRIED_KELP, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
+        register(Items.KELP, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT), new AspectStack(SpiritCraftAspects.HYDRA_ASPECT));
         register(Items.BEEF, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));
         register(Items.COOKED_BEEF, new AspectStack(SpiritCraftAspects.CREO_ASPECT), new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 4), new AspectStack(SpiritCraftAspects.ESURIES_ASPECT, 4));
         register(Items.CHICKEN, new AspectStack(SpiritCraftAspects.CARNES_ASPECT, 3), new AspectStack(SpiritCraftAspects.VITA_ASPECT, 2), new AspectStack(SpiritCraftAspects.CREATURA_ASPECT));

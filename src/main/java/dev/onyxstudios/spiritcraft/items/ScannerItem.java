@@ -71,7 +71,11 @@ public class ScannerItem extends BaseItem {
                     }
                 }else {
                     if(scanResult.pos != null || scanResult.entityId >= 0) {
-                        ScannerInfoHudRenderer.addNotification(new LiteralText("Insufficient knowledge to scan this!").setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
+                        if(scanResult.unknownParent != null){
+                            ScannerInfoHudRenderer.addNotification(new LiteralText("To Understand this you need to understand the sources of " + scanResult.unknownParent.getDescriptor()).setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
+                        }else {
+                            ScannerInfoHudRenderer.addNotification(new LiteralText("Insufficient knowledge to scan this!").setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
+                        }
                     }
                 }
 

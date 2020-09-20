@@ -32,13 +32,14 @@ public class ScanResult {
     public boolean canScan = true;
     public Text name;
     public AspectStack[] aspects;
+    public Aspect unknownParent;
 
     public ScanResult(PlayerEntity player, int maxReach, float deltaTime) {
         IResearchComponent component = ResearchComponent.RESEARCH.get(player);
         this.maxReach = maxReach;
 
         EntityHitResult entityHitResult = raycastEntity(player);
-        if(entityHitResult != null) {
+        if (entityHitResult != null) {
             this.isScanned = component.isScanned(entityHitResult.getEntity());
             this.entityId = entityHitResult.getEntity().getEntityId();
             this.name = entityHitResult.getEntity().getDisplayName();
@@ -55,11 +56,11 @@ public class ScanResult {
 
     public void tryScan() {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-        if(entityId >= 0 && pos == null) {
+        if (entityId >= 0 && pos == null) {
             buf.writeInt(entityId);
             MinecraftClient.getInstance().getNetworkHandler().sendPacket(new CustomPayloadC2SPacket(ModPackets.PACKET_SCAN_ENTITY, buf));
             this.isScanned = true;
-        }else if(pos != null && !MinecraftClient.getInstance().world.isAir(pos)) {
+        } else if (pos != null && !MinecraftClient.getInstance().world.isAir(pos)) {
             buf.writeBlockPos(pos);
             MinecraftClient.getInstance().getNetworkHandler().sendPacket(new CustomPayloadC2SPacket(ModPackets.PACKET_SCAN_BLOCK, buf));
             this.isScanned = true;
@@ -68,17 +69,19 @@ public class ScanResult {
 
     private void checkCanScan(IResearchComponent component, Entity entity, Block block) {
         this.aspects = entity != null ? AspectMap.getAspects(entity) : AspectMap.getAspects(block);
-        if(MinecraftClient.getInstance().player.isCreative() && this.aspects.length > 0) {
+        if (MinecraftClient.getInstance().player.isCreative() && this.aspects.length > 0) {
             canScan = true;
             return;
         }
 
-        if(!isScanned) {
+        if (!isScanned) {
             if (aspects.length <= 0) canScan = false;
             for (AspectStack stack : aspects) {
                 for (Aspect parent : stack.getAspect().getParents()) {
-                    if(!component.isAspectUnlocked(parent))
+                    if (!component.isAspectUnlocked(parent)) {
                         canScan = false;
+                        unknownParent = parent;
+                    }
                 }
             }
         }
