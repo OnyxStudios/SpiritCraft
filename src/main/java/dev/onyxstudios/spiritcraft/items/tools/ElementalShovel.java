@@ -1,6 +1,5 @@
 package dev.onyxstudios.spiritcraft.items.tools;
 
-import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.registry.ModItems;
 import dev.onyxstudios.spiritcraft.utils.BlockUtils;
 import net.minecraft.block.Block;
@@ -28,7 +27,7 @@ public class ElementalShovel extends ShovelItem {
     public static final String ROTATION_WALL = "wall";
 
     public ElementalShovel() {
-        super(SCToolMaterials.ELEMENTAL, SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(SpiritCraft.GROUP));
+        super(SCToolMaterials.ELEMENTAL, SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(ModItems.GROUP));
     }
 
     @Override

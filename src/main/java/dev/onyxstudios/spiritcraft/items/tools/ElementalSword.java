@@ -1,6 +1,5 @@
 package dev.onyxstudios.spiritcraft.items.tools;
 
-import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.registry.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -21,7 +20,7 @@ import java.util.List;
 public class ElementalSword extends SwordItem {
 
     public ElementalSword() {
-        super(SCToolMaterials.ELEMENTAL, (int) SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(SpiritCraft.GROUP));
+        super(SCToolMaterials.ELEMENTAL, (int) SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(ModItems.GROUP));
     }
 
     @Override

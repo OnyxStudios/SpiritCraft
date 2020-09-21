@@ -40,6 +40,7 @@ dependencies {
 	include "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
 
 	modApi "me.shedaniel:RoughlyEnoughItems:${project.rei_version}"
+	modRuntime "com.github.SuperCoder7979:databreaker:${project.databreaker_version}"
 }
 
 processResources {

@@ -1,6 +1,5 @@
 package dev.onyxstudios.spiritcraft.items.tools;
 
-import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.registry.ModItems;
 import dev.onyxstudios.spiritcraft.registry.ModRenders;
 import dev.onyxstudios.spiritcraft.utils.BlockUtils;
@@ -31,7 +30,7 @@ public class ElementalAxe extends AxeItem {
     public static final int BREAK_RADIUS = 8;
 
     public ElementalAxe() {
-        super(SCToolMaterials.ELEMENTAL, SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(SpiritCraft.GROUP));
+        super(SCToolMaterials.ELEMENTAL, SCToolMaterials.ELEMENTAL.getAttackDamage(), SCToolMaterials.ELEMENTAL.getMiningSpeedMultiplier(), new Item.Settings().group(ModItems.GROUP));
     }
 
     @Override

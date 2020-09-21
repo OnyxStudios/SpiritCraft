@@ -1,10 +1,13 @@
 package dev.onyxstudios.spiritcraft.registry;
 
 import dev.onyxstudios.spiritcraft.SpiritCraft;
+import dev.onyxstudios.spiritcraft.api.events.client.RenderHudEvent;
 import dev.onyxstudios.spiritcraft.api.events.client.RenderInWorldEvent;
 import dev.onyxstudios.spiritcraft.client.particles.MagicBubbleParticle;
 import dev.onyxstudios.spiritcraft.client.particles.MagicFadeParticle;
 import dev.onyxstudios.spiritcraft.client.render.ElementalShovelRenderer;
+import dev.onyxstudios.spiritcraft.client.render.scanner.ScannerInfoHudRenderer;
+import dev.onyxstudios.spiritcraft.client.render.scanner.ScannerRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -36,6 +39,11 @@ public class ModRenders {
         registerParticle(new Identifier(SpiritCraft.MODID, "magic_fade"), MAGIC_FADE_TYPE, MagicFadeParticle.Factory::new);
 
         RenderInWorldEvent.EVENT.register((world, player, stack, vertexConsumer, camera) -> ElementalShovelRenderer.render(world, player, stack, vertexConsumer, camera));
+        RenderHudEvent.EVENT.register((matrix, partialTicks) -> {
+            ScannerRenderer.renderScannerHitResult(matrix, partialTicks);
+            ScannerInfoHudRenderer.renderInfoHud(matrix, partialTicks);
+            ScannerInfoHudRenderer.renderDisplayHud(matrix, partialTicks);
+        });
     }
 
     public static void renderSchedules(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider) {
