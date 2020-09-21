@@ -2,6 +2,10 @@
   "itemGroup.spiritcraft.itemgroup": "SpiritCraft",
   "category.spiritcraft.keybinds": "Spiritcraft Keys",
   "key.spiritcraft.shovel_rotate": "Rotate Shovel Placement",
+  "key.spiritcraft.gained_aspect": "Gained %s research point(s) for %s",
+  "key.spiritcraft.discovered_aspect": "you have discovered %s!",
+  "key.spiritcraft.unknown_aspect": "To understand this you need to understand the sources of %s",
+  "key.spiritcraft.insufficient_aspect": "Insufficient knowledge to scan this!",
   "biome.spiritcraft.spirit_forest": "Spirit Forest",
   "block.spiritcraft.elderwood": "Elderwood",
   "block.spiritcraft.elderwood_log": "Elderwood Log",
@@ -93,6 +97,5 @@
   "aspect.spiritcraft.tondeo_aspect": "Tondeo",
   "aspect.spiritcraft.linteum_aspect": "Linteum",
   "aspect.spiritcraft.gladio_aspect": "Gladio",
-  "aspect.spiritcraft.armatura_aspect": "Armatura",
-  "key.spiritcraft.gained_aspect": "Gained %s research point(s) for %s"
+  "aspect.spiritcraft.armatura_aspect": "Armatura"
 }

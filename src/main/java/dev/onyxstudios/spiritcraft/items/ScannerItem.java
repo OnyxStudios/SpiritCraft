@@ -45,12 +45,12 @@ public class ScannerItem extends BaseItem {
 
     @Override
     public void usageTick(World world, LivingEntity user, ItemStack stack, int remainingUseTicks) {
-        if(world.isClient) {
+        if (world.isClient) {
             ((PlayerEntity) user).playSound(ModSounds.ASPECT_SCAN, SoundCategory.MASTER, 0.2f, 1);
             IResearchComponent component = ResearchComponent.RESEARCH.get((PlayerEntity) user);
 
             if (scanResult != null && !scanResult.isScanned && remainingUseTicks <= 2) {
-                if(scanResult.canScan) {
+                if (scanResult.canScan) {
                     boolean[] discovered = new boolean[scanResult.aspects.length];
                     for (int i = 0; i < scanResult.aspects.length; i++) {
                         discovered[i] = component.isAspectUnlocked(scanResult.aspects[i].getAspect());
@@ -69,22 +69,22 @@ public class ScannerItem extends BaseItem {
                         MutableText text = new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "gained_aspect")), aspectStack.getCount(), name);
                         ScannerInfoHudRenderer.addNotification(text, aspectStack.getAspect());
 
-                        if(!newDiscovery) {
-                            MutableText discoveredText = new LiteralText("You have discovered ").append(name).append("!");
+                        if (!newDiscovery) {
+                            MutableText discoveredText = new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "discovered_aspect")), name);
                             ScannerInfoHudRenderer.addNotification(discoveredText.setStyle(Style.EMPTY.withColor(Formatting.GOLD)), aspectStack.getAspect());
                         }
                     }
-                }else {
-                    if((scanResult.pos != null && !world.isAir(scanResult.pos)) || scanResult.entityId >= 0) {
-                        if(scanResult.unknownParent != null){
-                            ScannerInfoHudRenderer.addNotification(new LiteralText("To Understand this you need to understand the sources of " + scanResult.unknownParent.getDescriptor()).setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
-                        }else {
-                            ScannerInfoHudRenderer.addNotification(new LiteralText("Insufficient knowledge to scan this!").setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
+                } else {
+                    if ((scanResult.pos != null && !world.isAir(scanResult.pos)) || scanResult.entityId >= 0) {
+                        if (scanResult.unknownParent != null) {
+                            ScannerInfoHudRenderer.addNotification(new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "unknown_aspect" )), scanResult.unknownParent.getDescriptor()).setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
+                        } else {
+                            ScannerInfoHudRenderer.addNotification(new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID,"insufficient_aspect"))).setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
                         }
                     }
                 }
 
-                if(scanResult.isScanned)
+                if (scanResult.isScanned)
                     ((PlayerEntity) user).playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, SoundCategory.MASTER, 0.6f, 1);
             }
         }
