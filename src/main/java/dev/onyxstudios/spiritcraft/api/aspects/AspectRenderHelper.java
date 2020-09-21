@@ -197,7 +197,7 @@ public class AspectRenderHelper {
         bufferBuilder.vertex(matrix, (float)xEnd, (float)yEnd, (float)z).color(k, l, m, j).next();
     }
 
-    public static void renderGuiAspectModel(MatrixStack stack, Aspect aspect, int x, int y, float scale) {
+    public static void renderGuiAspectModel(MatrixStack stack, Aspect aspect, float x, float y, float scale) {
         RenderSystem.pushMatrix();
         MinecraftClient.getInstance().getTextureManager().bindTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEX);
         MinecraftClient.getInstance().getTextureManager().getTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEX).setFilter(false, false);

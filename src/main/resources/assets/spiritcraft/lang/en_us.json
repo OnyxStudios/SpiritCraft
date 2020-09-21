@@ -93,5 +93,6 @@
   "aspect.spiritcraft.tondeo_aspect": "Tondeo",
   "aspect.spiritcraft.linteum_aspect": "Linteum",
   "aspect.spiritcraft.gladio_aspect": "Gladio",
-  "aspect.spiritcraft.armatura_aspect": "Armatura"
+  "aspect.spiritcraft.armatura_aspect": "Armatura",
+  "key.spiritcraft.gained_aspect": "Gained %s research point(s) for %s"
 }

@@ -6,8 +6,8 @@ import dev.onyxstudios.spiritcraft.api.events.client.RenderInWorldEvent;
 import dev.onyxstudios.spiritcraft.client.particles.MagicBubbleParticle;
 import dev.onyxstudios.spiritcraft.client.particles.MagicFadeParticle;
 import dev.onyxstudios.spiritcraft.client.render.ElementalShovelRenderer;
-import dev.onyxstudios.spiritcraft.client.render.ScannerInfoHudRenderer;
-import dev.onyxstudios.spiritcraft.client.render.ScannerRenderer;
+import dev.onyxstudios.spiritcraft.client.render.scanner.ScannerInfoHudRenderer;
+import dev.onyxstudios.spiritcraft.client.render.scanner.ScannerRenderer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -42,6 +42,7 @@ public class ModRenders {
         RenderHudEvent.EVENT.register((matrix, partialTicks) -> {
             ScannerRenderer.renderScannerHitResult(matrix, partialTicks);
             ScannerInfoHudRenderer.renderInfoHud(matrix, partialTicks);
+            ScannerInfoHudRenderer.renderDisplayHud(matrix, partialTicks);
         });
     }
 

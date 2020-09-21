@@ -1,4 +1,4 @@
-package dev.onyxstudios.spiritcraft.utils;
+package dev.onyxstudios.spiritcraft.utils.scanner;
 
 import dev.onyxstudios.spiritcraft.api.aspects.Aspect;
 import net.minecraft.text.Text;

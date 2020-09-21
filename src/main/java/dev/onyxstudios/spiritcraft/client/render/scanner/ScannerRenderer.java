@@ -1,10 +1,10 @@
-package dev.onyxstudios.spiritcraft.client.render;
+package dev.onyxstudios.spiritcraft.client.render.scanner;
 
 import dev.onyxstudios.spiritcraft.api.aspects.AspectRenderHelper;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import dev.onyxstudios.spiritcraft.items.ScannerItem;
 import dev.onyxstudios.spiritcraft.registry.ModItems;
-import dev.onyxstudios.spiritcraft.utils.ScanResult;
+import dev.onyxstudios.spiritcraft.utils.scanner.ScanResult;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.math.MatrixStack;
 

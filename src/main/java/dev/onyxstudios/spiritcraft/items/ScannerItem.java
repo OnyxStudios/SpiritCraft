@@ -1,12 +1,13 @@
 package dev.onyxstudios.spiritcraft.items;
 
+import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import dev.onyxstudios.spiritcraft.api.components.research.IResearchComponent;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
-import dev.onyxstudios.spiritcraft.client.render.ScannerInfoHudRenderer;
+import dev.onyxstudios.spiritcraft.client.render.scanner.ScannerInfoHudRenderer;
 import dev.onyxstudios.spiritcraft.registry.ModItems;
 import dev.onyxstudios.spiritcraft.registry.ModSounds;
-import dev.onyxstudios.spiritcraft.utils.ScanResult;
+import dev.onyxstudios.spiritcraft.utils.scanner.ScanResult;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -58,10 +59,14 @@ public class ScannerItem extends BaseItem {
                     scanResult.tryScan();
                     for (int i = 0; i < scanResult.aspects.length; i++) {
                         AspectStack aspectStack = scanResult.aspects[i];
+                        for (int j = 0; j < aspectStack.getCount(); j++) {
+                            ScannerInfoHudRenderer.addDisplayAspect(aspectStack.getAspect());
+                        }
+
                         boolean newDiscovery = discovered[i];
 
                         TranslatableText name = new TranslatableText(Util.createTranslationKey("aspect", aspectStack.getAspect().getId()));
-                        MutableText text = new LiteralText("Gained " + aspectStack.getCount() + " research point(s) for ").append(name);
+                        MutableText text = new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "gained_aspect")), aspectStack.getCount(), name);
                         ScannerInfoHudRenderer.addNotification(text, aspectStack.getAspect());
 
                         if(!newDiscovery) {
@@ -70,7 +75,7 @@ public class ScannerItem extends BaseItem {
                         }
                     }
                 }else {
-                    if(scanResult.pos != null || scanResult.entityId >= 0) {
+                    if((scanResult.pos != null && !world.isAir(scanResult.pos)) || scanResult.entityId >= 0) {
                         if(scanResult.unknownParent != null){
                             ScannerInfoHudRenderer.addNotification(new LiteralText("To Understand this you need to understand the sources of " + scanResult.unknownParent.getDescriptor()).setStyle(Style.EMPTY.withColor(Formatting.RED)), null);
                         }else {
