@@ -3,6 +3,7 @@ package dev.onyxstudios.spiritcraft;
 import dev.onyxstudios.foml.obj.OBJLoader;
 import dev.onyxstudios.spiritcraft.api.aspects.SpiritCraftAspects;
 import dev.onyxstudios.spiritcraft.client.ClientTickHandler;
+import dev.onyxstudios.spiritcraft.client.models.ModelWand;
 import dev.onyxstudios.spiritcraft.client.shaders.Shaders;
 import dev.onyxstudios.spiritcraft.registry.*;
 import dev.onyxstudios.spiritcraft.utils.KeyBinds;
@@ -43,6 +44,14 @@ public class SpiritCraftClient implements ClientModInitializer {
 
         ModelLoadingRegistry.INSTANCE.registerAppender((resourceManager, consumer) -> {
             consumer.accept(new ModelIdentifier(new Identifier(SpiritCraft.MODID, "base_crystal"), ""));
+        });
+
+        ModelLoadingRegistry.INSTANCE.registerResourceProvider(resourceManager -> (identifier, modelProviderContext) -> {
+            if(identifier.getNamespace().equals(SpiritCraft.MODID) && identifier.getPath().contains("_wand")) {
+                return new ModelWand();
+            }
+
+            return null;
         });
         SpiritCraftAspects.registerResources();
     }

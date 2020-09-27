@@ -3,13 +3,13 @@ package dev.onyxstudios.spiritcraft.api.aspects;
 public class AspectStack {
 
     protected Aspect aspect;
-    protected int count;
+    protected float count;
 
     public AspectStack(Aspect aspect) {
         this(aspect, 1);
     }
 
-    public AspectStack(Aspect aspect, int count) {
+    public AspectStack(Aspect aspect, float count) {
         this.aspect = aspect;
         this.count = count;
     }
@@ -18,19 +18,19 @@ public class AspectStack {
         return aspect;
     }
 
-    public int getCount() {
+    public float getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(float count) {
         this.count = count;
     }
 
-    public void grow(int amount) {
+    public void grow(float amount) {
         this.count += amount;
     }
 
-    public void shrink(int amount) {
+    public void shrink(float amount) {
         this.count -= amount;
         if(count < 0)
             count = 0;

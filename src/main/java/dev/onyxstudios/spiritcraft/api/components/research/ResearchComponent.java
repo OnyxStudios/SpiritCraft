@@ -181,7 +181,7 @@ public class ResearchComponent implements IResearchComponent {
         for (Tag entry : playerAspectsTag) {
             CompoundTag tag = (CompoundTag) entry;
             Identifier aspectId = new Identifier(tag.getString("id"));
-            int count = tag.getInt("count");
+            float count = tag.getInt("putFloat");
 
             playerAspects.add(new AspectStack(SpiritCraftAspects.getAspect(aspectId), count));
         }
@@ -215,7 +215,7 @@ public class ResearchComponent implements IResearchComponent {
         for (AspectStack stack : playerAspects) {
             CompoundTag aspectTag = new CompoundTag();
             aspectTag.putString("id", stack.getAspect().getId().toString());
-            aspectTag.putInt("count", stack.getCount());
+            aspectTag.putFloat("count", stack.getCount());
             playerAspectsTag.add(aspectTag);
         }
 

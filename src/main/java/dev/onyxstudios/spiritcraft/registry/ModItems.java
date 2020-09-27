@@ -5,6 +5,8 @@ import dev.onyxstudios.spiritcraft.items.BaseItem;
 import dev.onyxstudios.spiritcraft.items.ScannerItem;
 import dev.onyxstudios.spiritcraft.items.tools.*;
 import dev.onyxstudios.spiritcraft.items.tools.base.*;
+import dev.onyxstudios.spiritcraft.items.wands.BaseCap;
+import dev.onyxstudios.spiritcraft.items.wands.BaseWand;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
@@ -53,6 +55,17 @@ public class ModItems {
     public static Item ORDIN_CRYSTAL_SHARD = new BaseItem();
     public static Item VALE_CRYSTAL_SHARD = new BaseItem();
 
+    //Wands
+    public static Item ELDERWOOD_ROD = new BaseItem();
+    public static Item SPIRITWOOD_ROD = new BaseItem();
+    public static Item IRON_CAP = new BaseCap(-25);
+    public static Item GOLD_CAP = new BaseCap(100);
+    public static Item SPIRIUM_CAP = new BaseCap(25);
+
+    public static Item WOODEN_WAND = new BaseWand(25, IRON_CAP);
+    public static Item ELDERWOOD_WAND = new BaseWand(50, GOLD_CAP);
+    public static Item SPIRITWOOD_WAND = new BaseWand(100, SPIRIUM_CAP);
+
     public static void register() {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_ingot"), SPIRIUM_INGOT);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_ingot"), NULL_INGOT);
@@ -84,6 +97,15 @@ public class ModItems {
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_shovel"), NULL_SHOVEL);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "null_sword"), NULL_SWORD);
         Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "scanner"), SCANNER);
+
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spiritwood_rod"), SPIRITWOOD_ROD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elderwood_rod"), ELDERWOOD_ROD);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "wooden_wand"), WOODEN_WAND);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "elderwood_wand"), ELDERWOOD_WAND);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spiritwood_wand"), SPIRITWOOD_WAND);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "iron_cap"), IRON_CAP);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "gold_cap"), GOLD_CAP);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "spirium_cap"), SPIRIUM_CAP);
     }
 
     @Environment(EnvType.CLIENT)
@@ -94,5 +116,9 @@ public class ModItems {
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x07c700, TELLUS_CRYSTAL_SHARD);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xfffafc, ORDIN_CRYSTAL_SHARD);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x242424, VALE_CRYSTAL_SHARD);
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xc9c9c9, IRON_CAP);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xFAD64A, GOLD_CAP);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x9930FB, SPIRIUM_CAP);
     }
 }

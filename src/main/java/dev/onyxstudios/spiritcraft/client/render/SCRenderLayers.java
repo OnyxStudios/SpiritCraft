@@ -10,7 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 public class SCRenderLayers {
 
-    public static Identifier ELEMENTAL_SCAN_ICON = new Identifier(SpiritCraft.MODID, "textures/effects/scan_icon.png");
+    public static Identifier ELEMENTAL_SCAN_ICON = new Identifier(SpiritCraft.MODID, "textures/particle/scan_icon.png");
 
     public static RenderLayer getElementalInstance() {
         return RenderLayer.of(

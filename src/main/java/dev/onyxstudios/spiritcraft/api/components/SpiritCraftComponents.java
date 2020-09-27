@@ -7,14 +7,15 @@ import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentFactoryRegistry;
 import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
+import dev.onyxstudios.spiritcraft.api.components.spirit.SpiritComponent;
+import dev.onyxstudios.spiritcraft.api.items.IWand;
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy;
 
 public class SpiritCraftComponents implements ItemComponentInitializer, BlockComponentInitializer, EntityComponentInitializer {
 
     @Override
     public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
-        //TODO Filter items for this component
-        //registry.registerFor(item -> false, SpiritComponent.SPIRIT, (item, stack) -> new SpiritComponent());
+        registry.registerFor(item -> item instanceof IWand, SpiritComponent.SPIRIT, (item, itemStack) -> new SpiritComponent(((IWand) item).getCapacity()));
     }
 
     @Override

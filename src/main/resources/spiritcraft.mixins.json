@@ -11,7 +11,8 @@
     "common.BlockMixin",
     "common.CookingRecipeSerializerMixin",
     "common.AxeItemMixin",
-    "common.ServerPlayerInteractionManagerMixin"
+    "common.ServerPlayerInteractionManagerMixin",
+    "common.ItemStackMixin"
   ],
   "client": [
     "client.WorldRendererMixin",

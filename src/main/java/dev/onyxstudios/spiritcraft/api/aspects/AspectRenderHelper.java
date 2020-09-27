@@ -106,7 +106,7 @@ public class AspectRenderHelper {
             for (AspectStack aspect : aspects) {
                 if(aspect.getCount() > 1) {
                     matrix.push();
-                    String string = String.valueOf(aspect.getCount());
+                    String string = String.valueOf((int) aspect.getCount());
                     matrix.translate(0, 0, 300);
                     renderer.draw(string, k + 19 - 2 - renderer.getWidth(string), l - 6, 16777215, true, matrix.peek().getModel(), immediate, false, 0, 15728880);
                     matrix.pop();
