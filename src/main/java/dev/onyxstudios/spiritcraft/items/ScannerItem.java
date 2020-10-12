@@ -14,7 +14,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Style;
 import net.minecraft.text.TranslatableText;
@@ -23,7 +22,7 @@ import net.minecraft.world.World;
 
 public class ScannerItem extends BaseItem {
 
-    public static int MAX_REACH = 4;
+    public static int MAX_REACH = 6;
     public ScanResult scanResult;
 
     public ScannerItem() {
@@ -66,7 +65,7 @@ public class ScannerItem extends BaseItem {
                         boolean newDiscovery = discovered[i];
 
                         TranslatableText name = new TranslatableText(Util.createTranslationKey("aspect", aspectStack.getAspect().getId()));
-                        MutableText text = new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "gained_aspect")), aspectStack.getCount(), name);
+                        MutableText text = new TranslatableText(Util.createTranslationKey("key", new Identifier(SpiritCraft.MODID, "gained_aspect")), (int) aspectStack.getCount(), name);
                         ScannerInfoHudRenderer.addNotification(text, aspectStack.getAspect());
 
                         if (!newDiscovery) {

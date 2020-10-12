@@ -3,6 +3,7 @@ package dev.onyxstudios.spiritcraft.registry;
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.blocks.ConnectedBlockBase;
 import dev.onyxstudios.spiritcraft.blocks.CrystalBlock;
+import dev.onyxstudios.spiritcraft.blocks.NodeBlock;
 import dev.onyxstudios.spiritcraft.blocks.tree.ElderwoodSaplingGenerator;
 import dev.onyxstudios.spiritcraft.blocks.tree.SaplingBlockBase;
 import dev.onyxstudios.spiritcraft.blocks.tree.SpiritwoodSaplingGenerator;
@@ -62,6 +63,8 @@ public class ModBlocks {
     public static Block ORDIN_CRYSTAL_BLOCK = new CrystalBlock();
     public static Block VALE_CRYSTAL_BLOCK = new CrystalBlock();
 
+    public static Block NODE_BLOCK = new NodeBlock();
+
     public static void register() {
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood"), ELDERWOOD);
         registerBlock(new Identifier(SpiritCraft.MODID, "elderwood_log"), ELDERWOOD_LOG);
@@ -84,6 +87,10 @@ public class ModBlocks {
         registerBlock(new Identifier(SpiritCraft.MODID, "ordin_crystal_block"), ORDIN_CRYSTAL_BLOCK, new BlockItemCrystal(ORDIN_CRYSTAL_BLOCK));
         registerBlock(new Identifier(SpiritCraft.MODID, "vale_crystal_block"), VALE_CRYSTAL_BLOCK, new BlockItemCrystal(VALE_CRYSTAL_BLOCK));
 
+        //Register only the block and no item
+        Registry.register(Registry.BLOCK, new Identifier(SpiritCraft.MODID, "node_block"), NODE_BLOCK);
+        Registry.register(Registry.ITEM, new Identifier(SpiritCraft.MODID, "creative_node_block"), new BlockItem(NODE_BLOCK, new Item.Settings().group(ModItems.GROUP)));
+
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_LOG, 5, 5);
         FlammableBlockRegistry.getDefaultInstance().add(ELDERWOOD_LEAVES, 30, 60);
@@ -103,6 +110,7 @@ public class ModBlocks {
         BlockRenderLayerMap.INSTANCE.putBlock(ORDIN_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(VALE_CRYSTAL_BLOCK, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(WARDED_GLASS, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(NODE_BLOCK, RenderLayer.getCutout());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ELDERWOOD_SAPLING, RenderLayer.getCutout());
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> GREATWOOD_LEAVES_COLOR, ELDERWOOD_LEAVES);

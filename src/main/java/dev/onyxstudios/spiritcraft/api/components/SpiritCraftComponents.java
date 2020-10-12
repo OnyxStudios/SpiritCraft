@@ -9,6 +9,7 @@ import dev.onyxstudios.cca.api.v3.item.ItemComponentInitializer;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
 import dev.onyxstudios.spiritcraft.api.components.spirit.SpiritComponent;
 import dev.onyxstudios.spiritcraft.api.items.IWand;
+import dev.onyxstudios.spiritcraft.blockentity.BlockEntityNode;
 import nerdhub.cardinal.components.api.util.RespawnCopyStrategy;
 
 public class SpiritCraftComponents implements ItemComponentInitializer, BlockComponentInitializer, EntityComponentInitializer {
@@ -22,7 +23,7 @@ public class SpiritCraftComponents implements ItemComponentInitializer, BlockCom
     public void registerBlockComponentFactories(BlockComponentFactoryRegistry registry) {
         //TODO Filter BlockEntities for components
         //registry.registerFor(new Identifier(""), EssenceComponent.ESSENCE, (state, world, pos, side) -> new EssenceComponent(10));
-        //registry.registerFor(new Identifier(""), SpiritComponent.SPIRIT, (state, world, pos, side) -> new SpiritComponent(LIST OF ASPECTS));
+        registry.registerFor(BlockEntityNode.class, SpiritComponent.SPIRIT, blockEntityNode -> new SpiritComponent(0, null));
     }
 
     @Override

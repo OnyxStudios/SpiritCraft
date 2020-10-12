@@ -5,10 +5,14 @@ import dev.onyxstudios.spiritcraft.api.aspects.AspectMap;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import dev.onyxstudios.spiritcraft.api.components.research.IResearchComponent;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
+import dev.onyxstudios.spiritcraft.api.components.spirit.ISpiritComponent;
+import dev.onyxstudios.spiritcraft.api.components.spirit.SpiritComponent;
+import dev.onyxstudios.spiritcraft.api.nodes.INode;
 import dev.onyxstudios.spiritcraft.registry.ModPackets;
 import io.netty.buffer.Unpooled;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,8 +32,10 @@ public class ScanResult {
 
     public BlockPos pos = null;
     public int entityId = -1;
+
     public boolean isScanned = false;
     public boolean canScan = true;
+
     public Text name;
     public AspectStack[] aspects;
     public Aspect unknownParent;
@@ -47,10 +53,16 @@ public class ScanResult {
         } else {
             BlockHitResult blockHitResult = raycastBlock(player, deltaTime);
             BlockState state = player.world.getBlockState(blockHitResult.getBlockPos());
-            this.isScanned = component.isScanned(state.getBlock());
             this.pos = blockHitResult.getBlockPos();
-            this.name = state.getBlock().getName();
-            checkCanScan(component, null, state.getBlock());
+
+            if(player.world.getBlockEntity(blockHitResult.getBlockPos()) instanceof INode) {
+                this.isScanned = component.isScanned(blockHitResult.getBlockPos());
+                checkCanScanNode(component, player.world.getBlockEntity(blockHitResult.getBlockPos()));
+            }else {
+                this.name = state.getBlock().getName();
+                this.isScanned = component.isScanned(state.getBlock());
+                checkCanScan(component, null, state.getBlock());
+            }
         }
     }
 
@@ -76,6 +88,27 @@ public class ScanResult {
 
         if (!isScanned) {
             if (aspects.length <= 0) canScan = false;
+            for (AspectStack stack : aspects) {
+                for (Aspect parent : stack.getAspect().getParents()) {
+                    if (!component.isAspectUnlocked(parent)) {
+                        canScan = false;
+                        unknownParent = parent;
+                    }
+                }
+            }
+        }
+    }
+
+    private void checkCanScanNode(IResearchComponent component, BlockEntity node) {
+        ISpiritComponent spiritComponent = SpiritComponent.SPIRIT.get(node);
+        this.aspects = spiritComponent.getAspects().toArray(new AspectStack[spiritComponent.getAspects().size()]);
+        if(MinecraftClient.getInstance().player.isCreative() && this.aspects.length > 0) {
+            canScan = true;
+            return;
+        }
+
+        if(!isScanned) {
+            if(aspects.length <= 0) canScan = false;
             for (AspectStack stack : aspects) {
                 for (Aspect parent : stack.getAspect().getParents()) {
                     if (!component.isAspectUnlocked(parent)) {

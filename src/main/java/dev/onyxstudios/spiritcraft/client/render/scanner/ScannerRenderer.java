@@ -23,16 +23,20 @@ public class ScannerRenderer {
 
             matrix.push();
             if(scanResult.isScanned) {
-                int x = (width / 2) - (client.textRenderer.getWidth(scanResult.name) / 2);
+                int x = (width / 2);
                 int y = height / 2 - 32;
-                client.textRenderer.draw(matrix, scanResult.name, x, y, 0xFFFFFF);
+
+                if (scanResult.name != null) {
+                    x -= (client.textRenderer.getWidth(scanResult.name) / 2);
+                    client.textRenderer.draw(matrix, scanResult.name, x, y, 0xFFFFFF);
+                }
 
                 y += 32;
                 x = (width / 2) - (scanResult.aspects.length * 16);
                 for (AspectStack stack : scanResult.aspects) {
                     if(stack.getCount() > 1) {
                         matrix.push();
-                        String string = String.valueOf(stack.getCount());
+                        String string = String.valueOf((int) stack.getCount());
                         matrix.translate(0, 0, 300);
                         client.textRenderer.draw(matrix, string, x + 22 - client.textRenderer.getWidth(string), y + 18, 0xFFFFFF);
                         matrix.pop();

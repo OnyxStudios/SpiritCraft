@@ -12,13 +12,12 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.util.Identifier;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class SpiritComponent implements ISpiritComponent {
 
     public static final ComponentKey<ISpiritComponent> SPIRIT = ComponentRegistryV3.INSTANCE.getOrCreate(new Identifier(SpiritCraft.MODID, "spirit"), ISpiritComponent.class);
+    public static final int MAX_NODE_ASPECTS = 100;
 
     private Map<Aspect, AspectStack> aspects = new HashMap<>();
     private int capacity;
@@ -27,18 +26,24 @@ public class SpiritComponent implements ISpiritComponent {
         this.capacity = capacity;
 
         //Add all primal aspects by default
-        aspects.put(SpiritCraftAspects.AURA_ASPECT, new AspectStack(SpiritCraftAspects.AURA_ASPECT, 20));
-        aspects.put(SpiritCraftAspects.SOLARIS_ASPECT, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 20));
-        aspects.put(SpiritCraftAspects.HYDRA_ASPECT, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 5));
-        aspects.put(SpiritCraftAspects.TELLUS_ASPECT, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT, 25));
-        aspects.put(SpiritCraftAspects.ORDIN_ASPECT, new AspectStack(SpiritCraftAspects.ORDIN_ASPECT, 15));
-        aspects.put(SpiritCraftAspects.VALE_ASPECT, new AspectStack(SpiritCraftAspects.VALE_ASPECT, 2));
+        aspects.put(SpiritCraftAspects.AURA_ASPECT, new AspectStack(SpiritCraftAspects.AURA_ASPECT, 0));
+        aspects.put(SpiritCraftAspects.SOLARIS_ASPECT, new AspectStack(SpiritCraftAspects.SOLARIS_ASPECT, 0));
+        aspects.put(SpiritCraftAspects.HYDRA_ASPECT, new AspectStack(SpiritCraftAspects.HYDRA_ASPECT, 0));
+        aspects.put(SpiritCraftAspects.TELLUS_ASPECT, new AspectStack(SpiritCraftAspects.TELLUS_ASPECT, 0));
+        aspects.put(SpiritCraftAspects.ORDIN_ASPECT, new AspectStack(SpiritCraftAspects.ORDIN_ASPECT, 0));
+        aspects.put(SpiritCraftAspects.VALE_ASPECT, new AspectStack(SpiritCraftAspects.VALE_ASPECT, 0));
     }
 
+    /**
+     * Manually specify all the aspects of the component! Useful for things like Nodes
+     */
     public SpiritComponent(int capacity, AspectStack... aspects) {
         this.capacity = capacity;
-        for (AspectStack aspectStack : aspects) {
-            this.aspects.put(aspectStack.getAspect(), aspectStack.copy());
+
+        if(aspects != null) {
+            for (AspectStack aspectStack : aspects) {
+                this.aspects.put(aspectStack.getAspect(), aspectStack.copy());
+            }
         }
     }
 
@@ -76,19 +81,23 @@ public class SpiritComponent implements ISpiritComponent {
     }
 
     @Override
-    public void useAspect(Aspect aspect, int amount) {
-        aspects.compute(aspect, (key, aspectStack) -> {
+    public void useAspect(Aspect aspect, float amount) {
+        aspects.computeIfPresent(aspect, (key, aspectStack) -> {
             aspectStack.shrink(aspectStack.getCount() >= amount ? amount : aspectStack.getCount());
             return aspectStack;
         });
     }
 
     @Override
-    public void addAspect(Aspect aspect, int amount) {
-        aspects.compute(aspect, (key, aspectStack) -> {
-            aspectStack.grow(amount + aspectStack.getCount() > capacity ? capacity - aspectStack.getCount() : amount);
-            return aspectStack;
-        });
+    public void addAspect(Aspect aspect, float amount) {
+        if(!aspects.containsKey(aspect)) {
+            aspects.put(aspect, new AspectStack(aspect, amount));
+        }else {
+            aspects.computeIfPresent(aspect, (key, aspectStack) -> {
+                aspectStack.grow(amount + aspectStack.getCount() > capacity ? capacity - aspectStack.getCount() : amount);
+                return aspectStack;
+            });
+        }
     }
 
     @Override
@@ -104,5 +113,10 @@ public class SpiritComponent implements ISpiritComponent {
     @Override
     public int getCapacity() {
         return this.capacity;
+    }
+
+    @Override
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

@@ -7,8 +7,12 @@ import dev.onyxstudios.spiritcraft.api.aspects.Aspect;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectMap;
 import dev.onyxstudios.spiritcraft.api.aspects.AspectStack;
 import dev.onyxstudios.spiritcraft.api.aspects.SpiritCraftAspects;
+import dev.onyxstudios.spiritcraft.api.components.spirit.ISpiritComponent;
+import dev.onyxstudios.spiritcraft.api.components.spirit.SpiritComponent;
+import dev.onyxstudios.spiritcraft.api.nodes.INode;
 import net.fabricmc.fabric.api.util.NbtType;
 import net.minecraft.block.Block;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -16,9 +20,12 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtHelper;
 import net.minecraft.nbt.Tag;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.World;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +40,7 @@ public class ResearchComponent implements IResearchComponent {
     protected List<Block> scannedBlocks = new ArrayList<>();
     protected List<Item> scannedItems = new ArrayList<>();
     protected List<EntityType<?>> scannedEntities = new ArrayList<>();
+    protected List<BlockPos> scannedNodes = new ArrayList<>();
 
     @Override
     public boolean isAspectUnlocked(Aspect aspect) {
@@ -103,6 +111,11 @@ public class ResearchComponent implements IResearchComponent {
     }
 
     @Override
+    public boolean isScanned(BlockPos pos) {
+        return scannedNodes.contains(pos);
+    }
+
+    @Override
     public void scanObject(Block block) {
         if(!scannedBlocks.contains(block)) {
             scannedBlocks.add(block);
@@ -146,6 +159,26 @@ public class ResearchComponent implements IResearchComponent {
     }
 
     @Override
+    public void scanObject(World world, BlockPos node) {
+        BlockEntity entity = world.getBlockEntity(node);
+
+        if(entity instanceof INode) {
+            ISpiritComponent component = SpiritComponent.SPIRIT.getNullable(entity);
+
+            if (component != null) {
+                scannedNodes.add(node);
+
+                for (AspectStack stack : component.getAspects()) {
+                    addAspect(stack.copy());
+
+                    if(!unlockedAspects.contains(stack.getAspect().getId()))
+                        unlockedAspects.add(stack.getAspect().getId());
+                }
+            }
+        }
+    }
+
+    @Override
     public List<Identifier> getUnlockedAspects() {
         return this.unlockedAspects;
     }
@@ -168,6 +201,11 @@ public class ResearchComponent implements IResearchComponent {
     @Override
     public List<EntityType<?>> getScannedEntities() {
         return this.scannedEntities;
+    }
+
+    @Override
+    public List<BlockPos> getScannedNodes() {
+        return scannedNodes;
     }
 
     @Override
@@ -199,6 +237,11 @@ public class ResearchComponent implements IResearchComponent {
         ListTag scannedEntitiesTag = compoundTag.getList("scannedEntities", NbtType.COMPOUND);
         for (Tag tag : scannedEntitiesTag) {
             scannedEntities.add(Registry.ENTITY_TYPE.get(new Identifier(((CompoundTag) tag).getString("id"))));
+        }
+
+        ListTag scannedNodesTag = compoundTag.getList("scannedNodes", NbtType.COMPOUND);
+        for (Tag tag : scannedNodesTag) {
+            scannedNodes.add(NbtHelper.toBlockPos((CompoundTag) tag));
         }
     }
 
@@ -240,10 +283,16 @@ public class ResearchComponent implements IResearchComponent {
             scannedEntitiesTag.add(tag);
         }
 
+        ListTag scannedNodesTag = new ListTag();
+        for (BlockPos nodePos : scannedNodes) {
+            scannedNodesTag.add(NbtHelper.fromBlockPos(nodePos));
+        }
+
         compoundTag.put("unlockedAspects", unlockedAspectsTag);
         compoundTag.put("playerAspects", playerAspectsTag);
         compoundTag.put("scannedBlocks", scannedBlocksTag);
         compoundTag.put("scannedItems", scannedItemsTag);
         compoundTag.put("scannedEntities", scannedEntitiesTag);
+        compoundTag.put("scannedNodes", scannedNodesTag);
     }
 }

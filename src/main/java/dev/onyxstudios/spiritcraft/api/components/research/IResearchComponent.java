@@ -8,6 +8,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import java.util.List;
 
@@ -62,6 +64,13 @@ public interface IResearchComponent extends AutoSyncedComponent {
     boolean isScanned(Entity entity);
 
     /**
+     * Check if a Node has been scanned at the provided BlockPos
+     * @param pos - The position of the node
+     * @return - True if scanned, false if not
+     */
+    boolean isScanned(BlockPos pos);
+
+    /**
      * Scan a block
      * @param block - The block you've scanned
      */
@@ -78,6 +87,13 @@ public interface IResearchComponent extends AutoSyncedComponent {
      * @param entity - The block you've scanned
      */
     void scanObject(Entity entity);
+
+    /**
+     * Scan a node
+     * @param world - The current world
+     * @param node - The position of the node you've scanned
+     */
+    void scanObject(World world, BlockPos node);
 
     /**
      * Get a list of all unlocked aspects
@@ -105,4 +121,9 @@ public interface IResearchComponent extends AutoSyncedComponent {
      * @return - A list of all scanned Entities
      */
     List<EntityType<?>> getScannedEntities();
+
+    /**
+     * @return - A list of all scanned Node positions
+     */
+    List<BlockPos> getScannedNodes();
 }

@@ -3,12 +3,14 @@ package dev.onyxstudios.spiritcraft.registry;
 import dev.onyxstudios.spiritcraft.SpiritCraft;
 import dev.onyxstudios.spiritcraft.api.components.research.IResearchComponent;
 import dev.onyxstudios.spiritcraft.api.components.research.ResearchComponent;
+import dev.onyxstudios.spiritcraft.api.nodes.INode;
 import dev.onyxstudios.spiritcraft.items.tools.ElementalShovel;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.network.ClientSidePacketRegistry;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -43,12 +45,21 @@ public class ModPackets {
 
         ServerSidePacketRegistry.INSTANCE.register(PACKET_SCAN_BLOCK, (context, buf) -> {
             PlayerEntity player = context.getPlayer();
+            BlockPos pos = buf.readBlockPos();
 
             if(player != null) {
-                IResearchComponent component = ResearchComponent.RESEARCH.get(player);
-                BlockState state = player.world.getBlockState(buf.readBlockPos());
-                component.scanObject(state.getBlock());
-                ResearchComponent.RESEARCH.sync(player);
+                context.getTaskQueue().execute(() -> {
+                    IResearchComponent component = ResearchComponent.RESEARCH.get(player);
+                    BlockState state = player.world.getBlockState(pos);
+                    BlockEntity blockEntity = player.world.getBlockEntity(pos);
+                    if(blockEntity instanceof INode) {
+
+                        component.scanObject(player.world, pos);
+                    }else {
+                        component.scanObject(state.getBlock());
+                    }
+                    ResearchComponent.RESEARCH.sync(player);
+                });
             }
         });
 

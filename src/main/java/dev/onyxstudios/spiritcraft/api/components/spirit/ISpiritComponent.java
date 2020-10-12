@@ -19,14 +19,14 @@ public interface ISpiritComponent extends ComponentV3, AutoSyncedComponent {
      * @param aspect - The aspect to use
      * @param amount - The amount of aspect to use
      */
-    void useAspect(Aspect aspect, int amount);
+    void useAspect(Aspect aspect, float amount);
 
     /**
      * Add to the amount of an aspect stored
      * @param aspect - The aspect to add to
      * @param amount - The amount of aspect to add
      */
-    void addAspect(Aspect aspect, int amount);
+    void addAspect(Aspect aspect, float amount);
 
     /**
      * Get an AspectStack for a certain aspect
@@ -47,4 +47,10 @@ public interface ISpiritComponent extends ComponentV3, AutoSyncedComponent {
      * @return - The capacity of the item
      */
     int getCapacity();
+
+    /**
+     * Set the capacity for the component
+     * @param capacity - The desired capacity
+     */
+    void setCapacity(int capacity);
 }
